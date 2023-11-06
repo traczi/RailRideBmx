@@ -1,0 +1,78 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+nav .low-navbar{
+    height: 50px;
+    flex-shrink: 0;
+    border: 1px solid #AAA;
+    background: #F4F4F6;
+    padding: 0 60px;
+    display: flex;
+    align-items: center;
+}
+nav .low-navbar a{
+    color: #000;
+    font-family: "Font/Heebo-Black.ttf" sans-serif;
+    text-decoration: none;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+nav .main-navbar{
+    padding: 0 60px;
+    height: 110px;
+    flex-shrink: 0;
+    background: #F4F4F6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+nav .main-navbar .cat-navbar{
+    margin: 0 220px;
+}
+nav .main-navbar a{
+    padding: 0 60px;
+    text-decoration: none;
+    color: #000;
+    font-family: "Font/Heebo-Black.ttf" sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+nav .main-navbar img{
+    padding: 0 34,5px;
+}
+nav .main-navbar input{
+    width: 100%;
+    height: 40px;
+    flex-shrink: 0;
+    border: 1px solid #939393;
+    background: #F4F4F6;
+    color: #939393;
+    font-family: "Font/Heebo-Black.ttf" sans-serif;
+    font-size: 20px;
+    padding-left: 30px;
+}
+nav .main-navbar .search-bar i{
+    position: absolute;
+}
+nav .navbar-message{
+    height: 50px;
+    flex-shrink: 0;
+    background: #333533;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+nav .navbar-message p{
+    color: #F4F4F6;
+    font-family: "Font/Heebo-Black.ttf.ttf" sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
