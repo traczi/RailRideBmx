@@ -18,7 +18,18 @@ public class ProductService : IProductService
     public async Task<IEnumerable<ProductResponseModel>> GetAllProductAsync()
     {
         var product = await _productRepository.GetProductAsync();
-        return product.Select(x => new ProductResponseModel() { Id = x.Id, Brand = x.Brand, Price = x.Price }).ToList();
+        return product.Select(products => new ProductResponseModel()
+        {
+            Brand = products.Brand, 
+            Price = products.Price,
+            Color = products.Color,
+            Height = products.Height,
+            Description = products.Description,
+            Image = products.Image,
+            Title = products.Title,
+            Quantity = products.Quantity,
+            Type = products.Type
+        }).ToList();
     }
     
     public async Task<ProductResponseModel> GetProductByIdAsync(Guid guid)

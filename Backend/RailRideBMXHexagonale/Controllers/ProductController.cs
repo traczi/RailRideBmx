@@ -17,7 +17,6 @@ public class ProductController : ApiController
     }
 
     [HttpGet]
-    [Authorize(Roles = "User")]
     public async Task<IActionResult> GetAllProductAsync()
     {
         var product = await _productService.GetAllProductAsync();
