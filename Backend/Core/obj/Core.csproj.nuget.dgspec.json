@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Git\\RailRideBmx\\Backend\\Core\\Core.csproj": {}
+    "C:\\Git\\RailRideBMXHexagonale\\Backend\\Core\\Core.csproj": {}
   },
   "projects": {
-    "C:\\Git\\RailRideBmx\\Backend\\Core\\Core.csproj": {
+    "C:\\Git\\RailRideBMXHexagonale\\Backend\\Core\\Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Git\\RailRideBmx\\Backend\\Core\\Core.csproj",
+        "projectUniqueName": "C:\\Git\\RailRideBMXHexagonale\\Backend\\Core\\Core.csproj",
         "projectName": "Core",
-        "projectPath": "C:\\Git\\RailRideBmx\\Backend\\Core\\Core.csproj",
-        "packagesPath": "C:\\Users\\Matteo\\.nuget\\packages\\",
-        "outputPath": "C:\\Git\\RailRideBmx\\Backend\\Core\\obj\\",
+        "projectPath": "C:\\Git\\RailRideBMXHexagonale\\Backend\\Core\\Core.csproj",
+        "packagesPath": "C:\\Users\\matte\\.nuget\\packages\\",
+        "outputPath": "C:\\Git\\RailRideBMXHexagonale\\Backend\\Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Matteo\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\matte\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -53,7 +55,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.411\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -30,7 +30,15 @@ public class ProductController : ApiController
         var product = await _productService.GetProductByIdAsync(guid);
         return Ok(product);
     }
-    
+
+    [HttpGet]
+    [Route("{type}/categorie")]
+    public async Task<IActionResult> GetProductByCategorieAsync(string type)
+    {
+        var product = await _productService.GetProductByCategorieAsync(type);
+        return Ok(product);
+    }
+
     [HttpPost]
     public async Task<IActionResult> CreateProductAsync(ProductResponseModel productResponseModel, string url)
     {

@@ -1,41 +1,59 @@
-*{
-    margin: 0;
-    padding: 0;
+* {
+  margin: 0;
+  padding: 0;
 }
-section{
-    display: flex;
-    margin: 0 20%;
+.title {
+  color: #000;
+  font-family: "Font/Heebo-Black.ttf" sans-serif;
+  font-size: 35px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  display: flex;
+  justify-content: center;
 }
-.productList{
-    margin: 2%;
+section {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 25%;
 }
-.productList .productImage{
-    width: 270px;
-    height: 270px;
-    flex-shrink: 0;
-    background: #EBEBEB;
+.productList {
+  margin: 2%;
 }
-.productList .productProps .productTitle{
-    color: #000;
-    font-family: "Font/Heebo-Black.ttf" sans-serif;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
+.productList .productImage {
+  width: 270px;
+  height: 270px;
+  flex-shrink: 0;
+  background: #ebebeb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.productList .productProps .productQuantity{
-    color: #B9B9B9;
-    font-family: "Font/Heebo-Black.ttf" sans-serif;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
+.productList .productImage .image {
+  width: 260px;
+  height: 260px;
+}
+.productList .productProps .productTitle {
+  color: #000;
+  font-family: "Font/Heebo-Black.ttf" sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.productList .productProps .productQuantity {
+  color: #b9b9b9;
+  font-family: "Font/Heebo-Black.ttf" sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
 }
 .productList .productProps .productPrice {
-    color: #000;
-    font-family: "Font/Heebo-Black.ttf" sans-serif;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
+  color: #000;
+  font-family: "Font/Heebo-Black.ttf" sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }

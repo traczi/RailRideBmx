@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "8kr0ELGh/d0Z88lPdv/34A5lMEEeDynroDjpCa/ZYzTU2GHYKm8MqG+DGPCRpVC3O7n3jqNOrCwT60O/O2DAag==",
+  "dgSpecHash": "fAN8bRjXIdtenWcCbNhDxyCjErNQvx6bjAFri8/yvgM4Lr4W5yrCNN1SPjvMs1MBZpapkQ4Wrdl32IkNtBn0eg==",
   "success": true,
-  "projectFilePath": "C:\\Git\\RailRideBmx\\Backend\\Core\\Core.csproj",
+  "projectFilePath": "C:\\Git\\RailRideBMXHexagonale\\Backend\\Core\\Core.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

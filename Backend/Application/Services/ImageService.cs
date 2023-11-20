@@ -20,4 +20,11 @@ public class ImageService : IImageService
         var uploadResult = _cloudinary.Upload(uploadParams);
         return uploadResult.PublicId;
     }
+
+    public string ImageUrl(string publicId)
+    {
+        var baseUrl = "https://res.cloudinary.com/dnmiqn9pk/image/upload/";
+        var url = $"{baseUrl}{publicId}.jpg";
+        return url;
+    }
 }

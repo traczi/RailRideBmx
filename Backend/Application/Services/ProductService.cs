@@ -17,19 +17,58 @@ public class ProductService : IProductService
 
     public async Task<IEnumerable<ProductResponseModel>> GetAllProductAsync()
     {
-        var product = await _productRepository.GetProductAsync();
-        return product.Select(products => new ProductResponseModel()
+        var products = await _productRepository.GetProductAsync();
+        var productsWithImage = new List<ProductResponseModel>();
+
+        foreach (var product in products)
         {
-            Brand = products.Brand, 
-            Price = products.Price,
-            Color = products.Color,
-            Height = products.Height,
-            Description = products.Description,
-            Image = products.Image,
-            Title = products.Title,
-            Quantity = products.Quantity,
-            Type = products.Type
-        }).ToList();
+            var url = _imageService.ImageUrl(product.Image);
+
+            var productResponse = new ProductResponseModel()
+            {
+                Brand = product.Brand,
+                Price = product.Price,
+                Color = product.Color, 
+                Height = product.Height,
+                Description = product.Description,
+                Image = url,
+                Title = product.Title,
+                Quantity = product.Quantity,
+                Type = product.Type
+            };
+            
+            productsWithImage.Add(productResponse);
+        }
+
+        return productsWithImage;
+    }
+
+    public async Task<IEnumerable<ProductResponseModel>> GetProductByCategorieAsync(string type)
+    {
+        var products = await _productRepository.GetProductByCategorieAsync(type);
+        var productsWithImage = new List<ProductResponseModel>();
+
+        foreach (var product in products)
+        {
+            var url = _imageService.ImageUrl(product.Image);
+
+            var productResponse = new ProductResponseModel()
+            {
+                Brand = product.Brand,
+                Price = product.Price,
+                Color = product.Color,
+                Height = product.Height,
+                Description = product.Description,
+                Image = url,
+                Title = product.Title,
+                Quantity = product.Quantity,
+                Type = product.Type
+            };
+            
+            productsWithImage.Add(productResponse);
+        }
+
+        return productsWithImage;
     }
     
     public async Task<ProductResponseModel> GetProductByIdAsync(Guid guid)
