@@ -26,6 +26,7 @@ public class ProductService : IProductService
 
             var productResponse = new ProductResponseModel()
             {
+                Id = product.Id,
                 Brand = product.Brand,
                 Price = product.Price,
                 Color = product.Color, 
