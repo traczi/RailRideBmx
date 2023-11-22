@@ -7,6 +7,7 @@ import Register from "./Components/Register/Register.js";
 import Login from "./Components/Login/Login.js";
 import Test from "./Components/Login/test.js";
 import Product from "./Components/Product/Product.js";
+import ProductDetails from "./Components/Product/ProductDetails.js";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -16,6 +17,7 @@ root.render(
       <Route path="register" element={<Register />} />
       <Route path="test" element={<Test />} />
       <Route path="product" element={<Product />} />
+      <Route parh="product/:id" element={<ProductDetails />} />
     </Routes>
   </BrowserRouter>
 );

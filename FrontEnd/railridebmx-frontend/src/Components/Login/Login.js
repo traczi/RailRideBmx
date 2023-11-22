@@ -15,7 +15,7 @@ const Login = () => {
   const navigate = useNavigate();
   const onLogin = async (data) => {
     try {
-      const res = await fetch("https://localhost:7134/api/Auth/Login", {
+      const res = await fetch("https://localhost:7139/api/Auth/Login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

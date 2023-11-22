@@ -11,6 +11,7 @@
   line-height: normal;
   display: flex;
   justify-content: center;
+  margin: 15px 0;
 }
 section {
   display: flex;
@@ -48,6 +49,13 @@ section {
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+}
+.productList .productProps .quantitySection {
+  display: flex;
+  align-items: center;
+}
+.productList .productProps .quantitySection .iconStock {
+  margin-left: 5px;
 }
 .productList .productProps .productPrice {
   color: #000;

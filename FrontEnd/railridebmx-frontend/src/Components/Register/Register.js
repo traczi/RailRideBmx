@@ -8,7 +8,7 @@ import NavBar from "../NavBar/NavBar";
 const onRegister = async (data) => {
   try {
     console.log(data);
-    const res = await fetch("https://localhost:7134/api/Auth/Register", {
+    const res = await fetch("https://localhost:7139/api/Auth/Register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

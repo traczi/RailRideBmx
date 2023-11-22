@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import "./Product.css";
 import NavBar from "../NavBar/NavBar";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircle } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 function Product() {
   const [products, setProducts] = useState([]);
@@ -27,7 +30,25 @@ function Product() {
       return "Pas en stock";
     }
   };
-
+  const getStatusColor = (quantity) => {
+    if (quantity > 0) {
+      return (
+        <FontAwesomeIcon
+          className="iconStock"
+          icon={faCircle}
+          style={{ color: "#469521" }}
+        />
+      );
+    } else {
+      return (
+        <FontAwesomeIcon
+          className="iconStock"
+          icon={faCircle}
+          style={{ color: "#e32626" }}
+        />
+      );
+    }
+  };
   return (
     <>
       <NavBar />
@@ -37,14 +58,22 @@ function Product() {
           return (
             <div className="productList">
               <div className="productImage">
-                <img className="image" src={product.image}></img>
+                <Link to={`/product/${product.id}`}>
+                  <img
+                    alt="imageOfProduct"
+                    className="image"
+                    src={product.image}
+                  ></img>
+                </Link>
               </div>
               <div className="productProps">
                 <h1 className="productTitle">{product.title}</h1>
-                <p className="productQuantity">
-                  {`${getStatusText(product.quantity)}`}
-                </p>
-                <i class="fa-solid fa-circle" />
+                <div className="quantitySection">
+                  <p className="productQuantity">
+                    {`${getStatusText(product.quantity)}`}
+                  </p>
+                  {getStatusColor(product.quantity)}
+                </div>
                 <p className="productPrice">{product.price}€</p>
               </div>
             </div>

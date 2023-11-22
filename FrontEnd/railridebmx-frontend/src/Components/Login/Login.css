@@ -61,6 +61,7 @@
   width: 40%;
   margin: 0 150px;
   margin-top: 40px;
+  cursor: pointer;
 }
 .error-message {
   color: red;

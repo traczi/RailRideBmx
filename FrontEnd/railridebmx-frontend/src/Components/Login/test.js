@@ -9,7 +9,7 @@ const Test = () => {
       navigate("/");
       return;
     }
-    fetch("https://localhost:7134/api/Bmx", {
+    fetch("https://localhost:7139/api/Bmx", {
       headers: { Authorization: `Bearer ${token}` },
     }).then((resp) => {
       resp = resp.json();
