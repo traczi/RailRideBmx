@@ -75,11 +75,20 @@ public class ProductService : IProductService
     public async Task<ProductResponseModel> GetProductByIdAsync(Guid guid)
     {
         var product = await _productRepository.GetProductByIdAsync(guid);
+        var productsWithImage = new List<ProductResponseModel>();
+        var url = _imageService.ImageUrl(product.Image);
         var productById = new ProductResponseModel()
         {
-            Brand = product.Brand,
             Id = product.Id,
-            Price = product.Price
+            Brand = product.Brand,
+            Price = product.Price,
+            Color = product.Color, 
+            Height = product.Height,
+            Description = product.Description,
+            Image = url,
+            Title = product.Title,
+            Quantity = product.Quantity,
+            Type = product.Type
             
         };
         return productById;

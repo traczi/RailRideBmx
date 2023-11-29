@@ -14,10 +14,10 @@ root.render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<Login />} />
-      <Route path="register" element={<Register />} />
-      <Route path="test" element={<Test />} />
-      <Route path="product" element={<Product />} />
-      <Route parh="product/:id" element={<ProductDetails />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="/test" element={<Test />} />
+      <Route path="/product/:id" element={<ProductDetails />} />
+      <Route path="/product" element={<Product />} />
     </Routes>
   </BrowserRouter>
 );

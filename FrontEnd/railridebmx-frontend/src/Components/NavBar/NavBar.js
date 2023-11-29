@@ -11,9 +11,7 @@ const NavBar = () => {
   return (
     <nav>
       <div className="low-navbar">
-        <a href="#mainpage">
-          <Link to="/product">RailRideBMX</Link>
-        </a>
+        <Link to="/product">RailRideBMX</Link>
         <div>
           <a>
             <FontAwesomeIcon icon={faHeart} />
@@ -21,11 +19,9 @@ const NavBar = () => {
           <a>
             <FontAwesomeIcon icon={faCartShopping} />
           </a>
-          <a href="#profil">
-            <Link to="/">
-              <FontAwesomeIcon icon={faUser} />
-            </Link>
-          </a>
+          <Link to="/">
+            <FontAwesomeIcon icon={faUser} />
+          </Link>
         </div>
       </div>
       <div className="main-navbar">

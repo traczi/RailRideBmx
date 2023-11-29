@@ -56,18 +56,18 @@ function Product() {
       <section>
         {products.map((product) => {
           return (
-            <div className="productList">
+            <div className="productList" key={product.id}>
               <div className="productImage">
-                <Link to={`/product/${product.id}`}>
-                  <img
-                    alt="imageOfProduct"
-                    className="image"
-                    src={product.image}
-                  ></img>
-                </Link>
+                <img
+                  alt="imageOfProduct"
+                  className="image"
+                  src={product.image}
+                ></img>
               </div>
               <div className="productProps">
-                <h1 className="productTitle">{product.title}</h1>
+                <Link to={`/product/${product.id}`}>
+                  <h1 className="productTitle">{product.title}</h1>
+                </Link>
                 <div className="quantitySection">
                   <p className="productQuantity">
                     {`${getStatusText(product.quantity)}`}
