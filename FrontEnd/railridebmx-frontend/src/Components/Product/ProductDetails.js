@@ -5,6 +5,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircle } from "@fortawesome/free-solid-svg-icons";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import "./ProductDetails.css";
+import QuantitySelector from "./QuantitySelector";
+import AnimatedTitle from "./AnimationTitle";
 
 function ProductDetails() {
   const [productsDetails, setProductsDetails] = useState([]);
@@ -77,23 +79,37 @@ function ProductDetails() {
               {getStatusColor(productsDetails.quantity)}
             </div>
             <p className="productPrice">{productsDetails.price}€</p>
-            <div className="bottomProductDetails">
-              <div className="quantityChoise">
-                <button type="button" className="decremanteButton">
-                  -
-                </button>
-                <input type="number" />
-                <button type="button" className="incremanteButton">
-                  +
-                </button>
+            <QuantitySelector product={productsDetails} />
+            <div className="descriptionProduct">
+              {/* <div className="descriptionContenair">
+                <div className="descriptionSubContenair">
+                  <h1 className="descriptionTitle">Description du produit</h1>
+                  <button className="descriptionButton">+</button>
+                </div>
+                <p className="descriptionText">{productsDetails.description}</p>
               </div>
-              <button type="button" className="buttonCart">
-                ADD TO CART
-              </button>
+              <div className="descriptionContenair">
+                <div className="descriptionSubContenair">
+                  <h1 className="descriptionTitle">Spécificités techniques</h1>
+                  <button className="descriptionButton">+</button>
+                </div>
+                <p className="descriptionText"></p>
+              </div>
+              <div className="descriptionContenair">
+                <div className="descriptionSubContenair">
+                  <h1 className="descriptionTitle">
+                    Caractéristique du produit
+                  </h1>
+                  <button className="descriptionButton">+</button>
+                </div>
+                <p className="descriptionText"></p>
+              </div> */}
+              <AnimatedTitle product={productsDetails} />
             </div>
           </div>
         </div>
       </section>
+      <hr />
     </>
   );
 }

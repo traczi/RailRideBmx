@@ -19,9 +19,9 @@ public class ProductRepository : IProductRepository
         return await _context.Products.ToListAsync();
     }
 
-    public async Task<List<Product>> GetProductByCategorieAsync(string type)
+    public async Task<List<Product>> GetProductByCategorieAsync(string category)
     {
-        var productByCategorie = _context.Products.Where(x => x.Type == type).ToListAsync();
+        var productByCategorie = _context.Products.Where(x => x.Category == category).ToListAsync();
         return await productByCategorie;
     }
     public async Task<Product> GetProductByIdAsync(Guid productId)

@@ -27,15 +27,10 @@ public class ProductService : IProductService
             var productResponse = new ProductResponseModel()
             {
                 Id = product.Id,
-                Brand = product.Brand,
                 Price = product.Price,
-                Color = product.Color, 
-                Height = product.Height,
-                Description = product.Description,
                 Image = url,
                 Title = product.Title,
-                Quantity = product.Quantity,
-                Type = product.Type
+                Quantity = product.Quantity
             };
             
             productsWithImage.Add(productResponse);
@@ -44,9 +39,9 @@ public class ProductService : IProductService
         return productsWithImage;
     }
 
-    public async Task<IEnumerable<ProductResponseModel>> GetProductByCategorieAsync(string type)
+    public async Task<IEnumerable<ProductResponseModel>> GetProductByCategorieAsync(string category)
     {
-        var products = await _productRepository.GetProductByCategorieAsync(type);
+        var products = await _productRepository.GetProductByCategorieAsync(category);
         var productsWithImage = new List<ProductResponseModel>();
 
         foreach (var product in products)
@@ -58,12 +53,12 @@ public class ProductService : IProductService
                 Brand = product.Brand,
                 Price = product.Price,
                 Color = product.Color,
-                Height = product.Height,
+                FrameSize = product.FrameSize,
                 Description = product.Description,
                 Image = url,
                 Title = product.Title,
                 Quantity = product.Quantity,
-                Type = product.Type
+                Category = product.Category
             };
             
             productsWithImage.Add(productResponse);
@@ -83,12 +78,16 @@ public class ProductService : IProductService
             Brand = product.Brand,
             Price = product.Price,
             Color = product.Color, 
-            Height = product.Height,
+            FrameSize = product.FrameSize,
+            HandlebarSize = product.HandlebarSize,
+            WheelSize = product.WheelSize,
             Description = product.Description,
             Image = url,
             Title = product.Title,
             Quantity = product.Quantity,
-            Type = product.Type
+            Category = product.Category,
+            SubCategory = product.SubCategory,
+            Geometry = product.Geometry
             
         };
         return productById;
@@ -102,12 +101,16 @@ public class ProductService : IProductService
             Brand = productResponseModel.Brand,
             Price = productResponseModel.Price,
             Color = productResponseModel.Color,
-            Height = productResponseModel.Height,
+            FrameSize = productResponseModel.FrameSize,
+            HandlebarSize = productResponseModel.HandlebarSize,
+            WheelSize = productResponseModel.WheelSize,
             Description = productResponseModel.Description,
             Image = idImage,
             Title = productResponseModel.Title,
             Quantity = productResponseModel.Quantity,
-            Type = productResponseModel.Type
+            Category = productResponseModel.Category,
+            SubCategory = productResponseModel.SubCategory,
+            Geometry = productResponseModel.Geometry
         };
         var createProduct = await _productRepository.CreateProduct(product);
         return new ProductResponseModel()
@@ -115,12 +118,16 @@ public class ProductService : IProductService
             Brand = createProduct.Brand,
             Price = createProduct.Price,
             Color = createProduct.Color,
-            Height = createProduct.Height,
+            FrameSize = createProduct.FrameSize,
+            HandlebarSize = createProduct.HandlebarSize,
+            WheelSize = createProduct.WheelSize,
             Description = createProduct.Description,
             Image = createProduct.Image,
             Title = createProduct.Title,
             Quantity = createProduct.Quantity,
-            Type = createProduct.Type
+            Category = createProduct.Category,
+            SubCategory = createProduct.SubCategory,
+            Geometry = createProduct.Geometry
         };
     }
 

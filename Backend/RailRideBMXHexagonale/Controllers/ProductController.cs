@@ -32,10 +32,10 @@ public class ProductController : ApiController
     }
 
     [HttpGet]
-    [Route("{type}/categorie")]
-    public async Task<IActionResult> GetProductByCategorieAsync(string type)
+    [Route("category/{type}")]
+    public async Task<IActionResult> GetProductByCategorieAsync(string category)
     {
-        var product = await _productService.GetProductByCategorieAsync(type);
+        var product = await _productService.GetProductByCategorieAsync(category);
         return Ok(product);
     }
 

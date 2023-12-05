@@ -18,13 +18,14 @@ section {
   display: flex;
   justify-content: center;
   align-items: center;
+  border: 1px solid #b1b1b1;
 }
 .product .productImage .image {
-  width: 490px;
-  height: 490px;
+  width: 500px;
+  height: 500px;
 }
 .product .detailProduct {
-  margin: 0 60px;
+  margin-left: 60px;
 }
 .product .detailProduct .titleProduct {
   color: #000;
@@ -75,6 +76,7 @@ section {
   line-height: normal;
   width: 120px;
   height: 50px;
+  cursor: pointer;
 }
 .product .detailProduct .bottomProductDetails {
   display: flex;
@@ -131,12 +133,80 @@ section {
   font-weight: 700;
   line-height: normal;
 }
+.product .detailProduct .descriptionProduct {
+  margin-top: 10px;
+}
+.product .detailProduct .descriptionProduct .descriptionContenair {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 2px solid #e6e6e9;
+}
+.product
+  .detailProduct
+  .descriptionProduct
+  .descriptionContenair
+  .descriptionSubContenair {
+  display: flex;
+  justify-content: space-between;
+  border: 2px solid #e6e6e9;
+  background: #fff;
+  border-bottom: none;
+  flex-wrap: wrap;
+}
+.product
+  .detailProduct
+  .descriptionProduct
+  .descriptionContenair
+  .descriptionSubContenair
+  .descriptionButton {
+  cursor: pointer;
+  color: #000;
+  text-align: center;
+  font-family: "Font/Heebo-Black.ttf" sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  border: none;
+  background: #fff;
+  margin: 0 11px;
+}
+.product
+  .detailProduct
+  .descriptionProduct
+  .descriptionContenair
+  .descriptionSubContenair
+  .descriptionTitle {
+  color: #000;
+  font-family: "Font/Heebo-Black.ttf" sans-serif;
+  font-size: 23px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.product
+  .detailProduct
+  .descriptionProduct
+  .descriptionContenair
+  .descriptionSubContenair
+  .descriptionText {
+  color: #818181;
+  font-family: "Font/Heebo-Black.ttf" sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  border-top: 2px solid #e6e6e9;
+}
+hr {
+  margin: 0 28%;
+  border: 0.1px solid #939393;
+  border-radius: 5%;
+  height: 0.1px;
+}
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
-}
-
-input[type="number"] {
-  -moz-appearance: textfield;
 }
