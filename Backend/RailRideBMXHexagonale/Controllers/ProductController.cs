@@ -24,7 +24,7 @@ public class ProductController : ApiController
     }
     
     [HttpGet]
-    [Route("{guid}")]
+    [Route("{ProductId}")]
     public async Task<IActionResult> GetProductByIdAsync(Guid guid)
     {
         var product = await _productService.GetProductByIdAsync(guid);
@@ -32,7 +32,7 @@ public class ProductController : ApiController
     }
 
     [HttpGet]
-    [Route("category/{type}")]
+    [Route("category/{category}")]
     public async Task<IActionResult> GetProductByCategorieAsync(string category)
     {
         var product = await _productService.GetProductByCategorieAsync(category);
@@ -47,7 +47,7 @@ public class ProductController : ApiController
     }
     
     [HttpPut]
-    [Route("{guid}")]
+    [Route("{ProductId}")]
     public async Task<IActionResult> UpdateProduct(Guid guid, ProductResponseModel productResponseModel)
     {
         var updateProduct = await _productService.UpdateProduct(guid, productResponseModel);
@@ -55,7 +55,7 @@ public class ProductController : ApiController
     }
     
     [HttpDelete]
-    [Route("{guid}")]
+    [Route("{ProductId}")]
     public async Task<IActionResult> DeleteProduct(Guid guid)
     {
         var deleteProduct = await _productService.DeleteProduct(guid);

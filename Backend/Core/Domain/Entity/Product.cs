@@ -17,4 +17,6 @@ public class Product
     public float Price { get; set; }
     public int Quantity { get; set; }
     
+    public List<ProductCart> ProductCarts { get; set; }
+
 }

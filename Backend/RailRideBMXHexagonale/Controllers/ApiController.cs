@@ -3,7 +3,7 @@
 namespace RailRideBMX.Controllers;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("RailRideBmx/[controller]")]
 public class ApiController : ControllerBase
 {
     

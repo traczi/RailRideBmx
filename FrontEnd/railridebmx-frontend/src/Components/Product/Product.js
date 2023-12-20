@@ -4,6 +4,7 @@ import NavBar from "../NavBar/NavBar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircle } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import Pagination from "./Pagination";
 
 function Product() {
   const [products, setProducts] = useState([]);
@@ -54,7 +55,7 @@ function Product() {
       <NavBar />
       <h1 className="title">BMX</h1>
       <section>
-        {products.map((product) => {
+        {/* {products.map((product) => {
           return (
             <div className="productList" key={product.id}>
               <div className="productImage">
@@ -78,8 +79,9 @@ function Product() {
               </div>
             </div>
           );
-        })}
+        })} */}
       </section>
+      <Pagination products={products} />
     </>
   );
 }
