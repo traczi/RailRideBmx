@@ -1,9 +1,9 @@
-﻿using Application.Helpers;
+﻿using Application;
 using Application.Models.User;
-using Application.Services;
 using Microsoft.AspNetCore.Mvc;
+using RailRideBMXHexagonale.Helpers;
 
-namespace RailRideBMX.Controllers;
+namespace RailRideBMXHexagonale.Controllers;
 
 public class AuthController : ApiController
 {

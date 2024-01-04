@@ -1,30 +1,34 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Register from "./Components/Register/Register.js";
 import Login from "./Components/Login/Login.js";
-import Test from "./Components/Login/test.js";
-import Product from "./Components/Product/Product.js";
-import ProductDetails from "./Components/Product/ProductDetails.js";
-import CreateProduct from "./Components/Product/CreateProduct.js";
+import AllProduct from "./Components/Product/ListProduct/AllProduct.js";
+import ProductDetails from "./Components/Product/ProductInDetails/ProductDetails.js";
+import CreateProduct from "./Components/Product/CreateProduct/CreateProduct.js";
+import Cart from "./Components/Cart/Cart.js";
+import NavBar from "./Components/NavBar/NavBar.js";
+import Comment from "./Components/Comment/Comment.js";
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
+import WishList from "./Components/Like/WishList";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
+    <ToastContainer/>
     <Routes>
-      <Route path="/" element={<Login />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/navbar" element={<NavBar />} />
       <Route path="/register" element={<Register />} />
-      <Route path="/test" element={<Test />} />
       <Route path="/product/:id" element={<ProductDetails />} />
       <Route path="/productCreate" element={<CreateProduct />} />
-      <Route path="/product" element={<Product />} />
+      <Route path="/" element={<AllProduct />} />
+      <Route path="/productCart" element={<Cart />} />
+      <Route path="/comment" element={<Comment />} />
+        <Route path="/wishList" element={<WishList />} />
     </Routes>
   </BrowserRouter>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();

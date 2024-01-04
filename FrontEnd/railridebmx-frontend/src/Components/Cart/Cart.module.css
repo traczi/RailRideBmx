@@ -1,0 +1,164 @@
+.cartpage {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 150vh;
+}
+.title {
+  color: #000;
+  font-family: "Font/Heebo-Black.ttf", sans-serif;
+  font-size: 35px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  display: flex;
+  justify-content: left;
+  margin: 0 28%;
+  margin-top: 37px;
+  padding-top: 50px;
+}
+.cartSection {
+  display: flex;
+  flex-wrap: nowrap;
+  margin: 25px 28%;
+}
+.allProduct {
+  display: flex;
+  width: 72%;
+  flex-direction: column;
+}
+.cartSummary {
+  margin-left: 2%;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  background: #ebebeb;
+  width: 277px;
+  height: 700px;
+  flex-shrink: 0;
+  padding-bottom: 50px;
+  align-items: center;
+}
+.cartSummary .totalPrice {
+  color: #000;
+  text-align: center;
+  font-family: "Font/Heebo-Black.ttf", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.cartSummary .orderButton {
+  width: 190px;
+  height: 60px;
+  flex-shrink: 0;
+  border: 1px solid #e6e6e9;
+  background: #333533;
+  color: #fff;
+  text-align: center;
+  font-family: "Font/Heebo-Black.ttf", sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-top: 15px;
+}
+.cartSummary .orderTitle {
+  color: #000;
+  font-family: "Font/Heebo-Black.ttf", sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.cart {
+  display: flex;
+  width: 100%;
+  margin-bottom: 30px;
+  flex-flow: wrap;
+  align-self: stretch;
+}
+.cart .cartItem {
+  display: flex;
+  width: 100%;
+}
+.cart .cartItem .imageProduct {
+  width: 200px;
+  height: 200px;
+  flex-shrink: 0;
+}
+.cart .cartItem .imageProduct .image {
+  width: 200px;
+  height: 200px;
+  flex-shrink: 0;
+}
+.cart .cartItem .productDetail {
+  display: flex;
+  flex-flow: nowrap;
+  width: 100%;
+  justify-content: space-between;
+}
+.cart .cartItem .productDetail .selectQuantity {
+  color: #000;
+  font-family: "Font/Heebo-Black.ttf", sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  width: 100px;
+  height: 50px;
+  flex-shrink: 0;
+}
+.cart .cartItem .productDetail .selectQuantity option {
+  color: #000;
+  font-family: "Font/Heebo-Black.ttf", sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.cart .cartItem .productDetail .productTotalPrice {
+  color: #000;
+  font-family: "Font/Heebo-Black.ttf", sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.cart .cartItem .productDetail .productDetailText .titleProduct {
+  color: #000;
+  font-family: "Font/Heebo-Black.ttf", sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-left: 5px;
+  margin-bottom: 5px;
+}
+.cart .cartItem .productDetail .productDetailText .quantityProduct {
+  color: #000;
+  font-family: "Font/Heebo-Black.ttf", sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-left: 5px;
+  margin-bottom: 5px;
+}
+.cart .cartItem .productDetail .productDetailText .productPrice {
+  color: #000;
+  font-family: "Font/Heebo-Black.ttf", sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-left: 5px;
+  margin-bottom: 5px;
+}
+hr {
+  margin-left: 28%;
+  margin-right: 40%;
+  border: 0.1px solid #939393;
+  border-radius: 5%;
+  height: 0.1px;
+}

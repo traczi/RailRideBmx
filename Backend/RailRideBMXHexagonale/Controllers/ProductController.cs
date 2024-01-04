@@ -1,9 +1,9 @@
-﻿using Application.Models.Product;
+﻿using Application;
+using Application.Models.Product;
 using Application.Services;
 using Core.Domain.Entity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using RailRideBMX.Controllers;
 
 namespace RailRideBMXHexagonale.Controllers;
 
@@ -24,7 +24,7 @@ public class ProductController : ApiController
     }
     
     [HttpGet]
-    [Route("{ProductId}")]
+    [Route("{guid}")]
     public async Task<IActionResult> GetProductByIdAsync(Guid guid)
     {
         var product = await _productService.GetProductByIdAsync(guid);
@@ -60,5 +60,62 @@ public class ProductController : ApiController
     {
         var deleteProduct = await _productService.DeleteProduct(guid);
         return Ok(deleteProduct);
+    }
+    
+    [HttpGet]
+    [Route("Pagination")]
+    public async Task<IActionResult> GetProductsPageAsync(int page = 1, int pageSize = 1)
+    {
+        try
+        {
+            var products = await _productService.GetProductPageAsync(page, pageSize);
+            return Ok(products);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, $"Une erreur s'est produite : {ex.Message}");
+        }
+    }
+    
+    [HttpGet]
+    [Route("Filter")]
+    public async Task<IActionResult> GetProductsFilteredAsync(
+        string? searchItem = null,
+        int page = 1,
+        int pageSize = 30,
+        string? color = null,
+        string? brand = null,
+        float? frameSize = null,
+        float? handlebarSize = null,
+        float? wheelSize = null,
+        bool showInStockOnly = false)
+    {
+        try
+        {
+            var products = await _productService.GetProductFilterAndSearchAsync(
+                searchItem,
+                page,
+                pageSize,
+                color,
+                brand,
+                frameSize,
+                handlebarSize,
+                wheelSize,
+                showInStockOnly);
+
+            return Ok(products);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, $"Une erreur s'est produite : {ex.Message}");
+        }
+    }
+    
+    [HttpGet]
+    [Route("GetAllProductProperties")]
+    public async Task<IActionResult> GetAllProductProperties()
+    {
+        var productProperties = await _productService.GetAllProductPropertiesAsync();
+        return Ok(productProperties);
     }
 }

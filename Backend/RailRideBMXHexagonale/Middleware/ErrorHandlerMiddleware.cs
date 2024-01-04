@@ -1,8 +1,12 @@
 ﻿using System.Net;
 using System.Text.Json;
+using Application.Exceptions;
 using Microsoft.EntityFrameworkCore;
+using KeyNotFoundException = Application.Exceptions.KeyNotFoundException;
+using NotImplementedException = Application.Exceptions.NotImplementedException;
+using UnauthorizedAccessException = Application.Exceptions.UnauthorizedAccessException;
 
-namespace RailRideBMX.Middleware;
+namespace RailRideBMXHexagonale.Middleware;
 
 public class ErrorHandlerMiddleware
 {

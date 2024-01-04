@@ -15,7 +15,7 @@ const Login = () => {
   const navigate = useNavigate();
   const onLogin = async (data) => {
     try {
-      const res = await fetch("https://localhost:7139/api/Auth/Login", {
+      const res = await fetch("https://localhost:7139/RailRideBmx/Auth/Login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -26,14 +26,14 @@ const Login = () => {
         const responseData = await res.json();
         const token = responseData.data.token;
         localStorage.setItem("jwtToken", token);
-        navigate("/test");
+        navigate("/AllProduct");
       }
     } catch (err) {
       console.log(err);
     }
   };
   return (
-    <>
+    <div className="login">
       <NavBar />
       <div className="login-field">
         <div className="title-login">
@@ -71,7 +71,7 @@ const Login = () => {
           </div>
         </Formik>
       </div>
-    </>
+    </div>
   );
 };
 export default Login;

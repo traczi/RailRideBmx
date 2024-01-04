@@ -44,7 +44,7 @@ const SignupSchema = Yup.object().shape({
 
 const Register = () => {
   return (
-    <>
+    <div className="registerCss">
       <NavBar />
       <div className="register-field">
         <div className="title-register">
@@ -106,7 +106,7 @@ const Register = () => {
           </div>
         </Formik>
       </div>
-    </>
+    </div>
   );
 };
 

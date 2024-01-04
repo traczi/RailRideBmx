@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace Application.Helpers;
+namespace RailRideBMXHexagonale.Helpers;
 
 public static class SuccessResponseHelper
 {

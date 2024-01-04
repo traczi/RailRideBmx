@@ -1,7 +1,6 @@
-﻿using Core.Domain.Entity;
-using Core.Enums;
+﻿using Core.Domain.Enums;
 
-namespace Core.Entities;
+namespace Core.Domain.Entity;
 
 public class User
 {
@@ -11,6 +10,5 @@ public class User
     public string Email { get; set; }
     public string Password { get; set; }
     public UserRole? Role { get; set; }
-    
-    public List<Cart> Cart { get; set; }
+    public ICollection<Like> Like { get; set; }
 }

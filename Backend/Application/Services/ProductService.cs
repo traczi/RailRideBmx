@@ -1,4 +1,5 @@
 ﻿using Application.Models.Product;
+using Core.Domain.DTOs;
 using Core.Domain.Entity;
 using Core.Ports;
 
@@ -70,7 +71,6 @@ public class ProductService : IProductService
     public async Task<ProductResponseModel> GetProductByIdAsync(Guid guid)
     {
         var product = await _productRepository.GetProductByIdAsync(guid);
-        var productsWithImage = new List<ProductResponseModel>();
         var url = _imageService.ImageUrl(product.Image);
         var productById = new ProductResponseModel()
         {
@@ -144,7 +144,76 @@ public class ProductService : IProductService
             Price = updateProduct.Price
         };
     }
-    
+
+    public async Task<IEnumerable<ProductResponseModel>> GetProductPageAsync(int page, int pageSize)
+    {
+        var productPage = await _productRepository.GetProductPage(page, pageSize);
+        var productsWithImage = new List<ProductResponseModel>();
+        foreach (var product in productPage)
+        {
+            var url = _imageService.ImageUrl(product.Image);
+            var productByPage = new ProductResponseModel()
+            {
+                Id = product.Id,
+                Brand = product.Brand,
+                Price = product.Price,
+                Color = product.Color, 
+                FrameSize = product.FrameSize,
+                HandlebarSize = product.HandlebarSize,
+                WheelSize = product.WheelSize,
+                Description = product.Description,
+                Image = url,
+                Title = product.Title,
+                Quantity = product.Quantity,
+                Category = product.Category,
+                SubCategory = product.SubCategory,
+                Geometry = product.Geometry
+            
+            };
+            productsWithImage.Add(productByPage);
+        }
+
+        return productsWithImage;
+    }
+
+    public async Task<IEnumerable<ProductResponseModel>> GetProductFilterAndSearchAsync(string? searchItem, int page, int pageSize, string? color, string? brand, float? frameSize, float? handlebarSize,
+        float? wheelSize, bool showInStockOnly)
+    {
+        var productFilter = await _productRepository.GetProductFilterAndSearch(searchItem, page, pageSize, color, brand, frameSize, handlebarSize, wheelSize,
+            showInStockOnly);
+        var productsWithImage = new List<ProductResponseModel>();
+        foreach (var product in productFilter)
+        {
+            var url = _imageService.ImageUrl(product.Image);
+            var productByFilter = new ProductResponseModel()
+            {
+                Id = product.Id,
+                Brand = product.Brand,
+                Price = product.Price,
+                Color = product.Color, 
+                FrameSize = product.FrameSize,
+                HandlebarSize = product.HandlebarSize,
+                WheelSize = product.WheelSize,
+                Description = product.Description,
+                Image = url,
+                Title = product.Title,
+                Quantity = product.Quantity,
+                Category = product.Category,
+                SubCategory = product.SubCategory,
+                Geometry = product.Geometry
+            
+            };
+            productsWithImage.Add(productByFilter);
+        }
+
+        return productsWithImage;
+    }
+
+    public async Task<ProductPropertiesDto> GetAllProductPropertiesAsync()
+    {
+        return await _productRepository.GetAllProductPropertiesAsync();
+    }
+
     public async Task<ProductResponseModel> DeleteProduct(Guid guid)
     {
         var product = await _productRepository.GetProductByIdAsync(guid);

@@ -1,0 +1,9 @@
+.button-like{
+    display: flex;
+    background-color: white;
+    border: none;
+}
+.heart{
+    height: 35px;
+    color: #c43434;
+}

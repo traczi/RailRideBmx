@@ -16,7 +16,7 @@ public class Product
     public float? WheelSize { get; set; }
     public float Price { get; set; }
     public int Quantity { get; set; }
-    
     public List<ProductCart> ProductCarts { get; set; }
+    public ICollection<Like> Like { get; set; }
 
 }

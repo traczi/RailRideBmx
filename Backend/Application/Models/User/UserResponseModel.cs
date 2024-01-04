@@ -1,4 +1,4 @@
-﻿using Core.Enums;
+﻿using Core.Domain.Enums;
 
 namespace Application.Models.User;
 

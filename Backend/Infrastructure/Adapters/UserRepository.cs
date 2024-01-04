@@ -1,5 +1,5 @@
-﻿using Core.Entities;
-using DataAccess.Repositories;
+﻿using Core.Domain.Entity;
+using Core.Ports;
 using Infrastructure.DbContext;
 using Microsoft.EntityFrameworkCore;
 

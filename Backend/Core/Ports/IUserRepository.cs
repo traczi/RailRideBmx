@@ -1,6 +1,6 @@
-﻿using Core.Entities;
+﻿using Core.Domain.Entity;
 
-namespace DataAccess.Repositories;
+namespace Core.Ports;
 
 public interface IUserRepository
 {

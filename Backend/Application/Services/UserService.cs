@@ -1,14 +1,12 @@
 ﻿using System.Text.RegularExpressions;
-using Application.Models.User;  
-using Core.Entities;
-using Core.Enums;
-using DataAccess.Repositories;
+using Application.Exceptions;
+using Application.Models.User;
+using Core.Domain.Entity;
+using Core.Domain.Enums;
+using Core.Ports;
 using OneOf;
-using OneOf.Types;
-using RailRideBMX.Middleware;
 
-
-namespace Application.Services.Impl;
+namespace Application.Services;
 
 public class UserService : IUserService
 {

@@ -1,4 +1,4 @@
-* {
+.registerCss {
   margin: 0;
   padding: 0;
 }
@@ -9,7 +9,7 @@
 }
 .title-register {
   color: #000;
-  font-family: "Font/Heebo-Black.ttf" sans-serif;
+  font-family: "Font/Heebo-Black.ttf", sans-serif;
   font-size: 30px;
   font-style: normal;
   font-weight: 700;
@@ -27,7 +27,7 @@
 }
 .register-content p {
   color: #000;
-  font-family: "Font/Heebo-Black.ttf" sans-serif;
+  font-family: "Font/Heebo-Black.ttf", sans-serif;
   font-size: 20px;
   font-style: normal;
   font-weight: 700;
@@ -56,7 +56,7 @@
   background: #333533;
   color: #fff;
   text-align: center;
-  font-family: "Font/Heebo-Black.ttf" sans-serif;
+  font-family: "Font/Heebo-Black.ttf", sans-serif;
   font-size: 20px;
   height: 50px;
   width: 40%;
@@ -68,6 +68,6 @@
   color: red;
   margin: 0 5%;
   height: 0;
-  font-family: "Font/Heebo-Black.ttf" sans-serif;
+  font-family: "Font/Heebo-Black.ttf", sans-serif;
   margin-right: 10%;
 }

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace RailRideBMX.Controllers;
+namespace RailRideBMXHexagonale.Controllers;
 
 [ApiController]
 [Route("RailRideBmx/[controller]")]

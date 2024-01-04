@@ -1,7 +1,7 @@
-﻿using Application.Helpers;
+﻿using Application;
 using Application.Services;
 using Microsoft.AspNetCore.Mvc;
-using RailRideBMX.Controllers;
+using RailRideBMXHexagonale.Helpers;
 
 namespace RailRideBMXHexagonale.Controllers;
 

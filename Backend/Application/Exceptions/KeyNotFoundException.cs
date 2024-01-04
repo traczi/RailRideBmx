@@ -1,4 +1,4 @@
-﻿namespace RailRideBMX.Middleware;
+﻿namespace Application.Exceptions;
 
 public class KeyNotFoundException : Exception
 {
