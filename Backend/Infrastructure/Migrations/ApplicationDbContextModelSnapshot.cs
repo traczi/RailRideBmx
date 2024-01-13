@@ -28,6 +28,9 @@ namespace Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<bool>("IsPayd")
+                        .HasColumnType("bit");
+
                     b.Property<string>("SessionId")
                         .HasColumnType("nvarchar(max)");
 
@@ -52,6 +55,9 @@ namespace Infrastructure.Migrations
                     b.Property<DateTime>("DatePosted")
                         .HasColumnType("datetime2");
 
+                    b.Property<bool?>("IsReported")
+                        .HasColumnType("bit");
+
                     b.Property<Guid>("ProductId")
                         .HasColumnType("uniqueidentifier");
 
@@ -68,6 +74,107 @@ namespace Infrastructure.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Comments");
+                });
+
+            modelBuilder.Entity("Core.Domain.Entity.ConfigurationBMX", b =>
+                {
+                    b.Property<Guid>("ConfigurationId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("AssemblyId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("ChainsId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("CrankSetId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreateAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid?>("DiskId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("ForkId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("FrameId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("FrontBrakesId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("GallowsId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("HandlebarCapId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("HandlebarCuffId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("HandlebarId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("HeadsetId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("HubsId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("NameConfiguration")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid?>("PedalArmsId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("PedalId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("PegsId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("RearBrakesId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("RimId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("RotorId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("SaddleClampId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("SaddleId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("SaddleStemId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("SpokesId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("TireId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("UpdateAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("WheelId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("ConfigurationId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("ConfigurationsBMX");
                 });
 
             modelBuilder.Entity("Core.Domain.Entity.Like", b =>
@@ -106,6 +213,9 @@ namespace Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Color")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ConfigCategory")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
@@ -192,6 +302,12 @@ namespace Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("ResetPassWordToken")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("ResetPasswordTokenExpiration")
+                        .HasColumnType("datetime2");
+
                     b.Property<int?>("Role")
                         .HasColumnType("int");
 
@@ -218,6 +334,17 @@ namespace Infrastructure.Migrations
                         .IsRequired();
 
                     b.Navigation("Product");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Core.Domain.Entity.ConfigurationBMX", b =>
+                {
+                    b.HasOne("Core.Domain.Entity.User", "User")
+                        .WithMany("Configurations")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("User");
                 });
@@ -274,6 +401,8 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Core.Domain.Entity.User", b =>
                 {
+                    b.Navigation("Configurations");
+
                     b.Navigation("Like");
                 });
 #pragma warning restore 612, 618

@@ -37,4 +37,34 @@ public class CommentRepository : ICommentRepository
         await _context.SaveChangesAsync();
         return comment;
     }
+
+    public async Task<double> GetAverageRatingAsync(Guid productId)
+    {
+        return await _context.Comments
+            .Where(c => c.ProductId == productId)
+            .AverageAsync(c => (double?)c.Rating) ?? 0;
+    }
+
+    public async Task ReportedCommentAsync(Guid commentId)
+    {
+        var comment = await _context.Comments.FindAsync(commentId);
+        if (comment != null)
+        {
+            comment.IsReported = true;
+            await _context.SaveChangesAsync();
+        }
+    }
+
+    public async Task<List<Comment>> GetReportedCommentAsync()
+    {
+        return await _context.Comments
+            .Where(c => c.IsReported)
+            .ToListAsync();
+    }
+
+    public async Task UpdateCommentAsync(Comment comment)
+    {
+        _context.Comments.Update(comment);
+        await _context.SaveChangesAsync();
+    }
 }

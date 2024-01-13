@@ -1,0 +1,79 @@
+
+.comment-item {
+    position: relative;
+}
+
+.comment-options .options-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.options-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    z-index: 1;
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+}
+
+.comment-options:hover .options-menu {
+    display: block;
+}
+
+.options-menu button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: block;
+    text-align: left;
+}
+.ReactModal__Overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.ReactModal__Content {
+    margin: 20% 38%;
+}
+.ReactModal__Content h2{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    font-family: "Font/Heebo-Black.ttf", sans-serif;
+    font-size: 2rem;
+}
+.ReactModal__Content .buttonModal{
+    display: flex;
+    justify-content: center;
+}
+.ReactModal__Content .buttonModal{
+    display: flex;
+    justify-content: center;
+}
+.ReactModal__Content .buttonModal button{
+    border: none;
+    margin: 30px 30px ;
+    font-family: "Font/Heebo-Black.ttf", sans-serif;
+    font-size: 1.5rem;
+    border-radius: 15px;
+    padding:5px 10px;
+}
+.ReactModal__Content .buttonModal .confirmButton{
+    color: white;
+    background-color: #469521;
+    cursor: pointer;
+}
+.ReactModal__Content .buttonModal .cancelButton{
+    color: white;
+    background-color: #e32323;
+    cursor: pointer;
+}
+
+

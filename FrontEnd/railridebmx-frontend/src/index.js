@@ -3,7 +3,6 @@ import ReactDOM from "react-dom/client";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Register from "./Components/Register/Register.js";
-import Login from "./Components/Login/Login.js";
 import AllProduct from "./Components/Product/ListProduct/AllProduct.js";
 import ProductDetails from "./Components/Product/ProductInDetails/ProductDetails.js";
 import CreateProduct from "./Components/Product/CreateProduct/CreateProduct.js";
@@ -13,13 +12,15 @@ import Comment from "./Components/Comment/Comment.js";
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 import WishList from "./Components/Like/WishList";
+import PaymentForm from "./Components/Stripe/PaymentForm";
+import LoginPage from "./Components/Login/LoginPage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
     <ToastContainer/>
     <Routes>
-      <Route path="/login" element={<Login />} />
+      <Route path="/login" element={<LoginPage />} />
       <Route path="/navbar" element={<NavBar />} />
       <Route path="/register" element={<Register />} />
       <Route path="/product/:id" element={<ProductDetails />} />
@@ -28,6 +29,7 @@ root.render(
       <Route path="/productCart" element={<Cart />} />
       <Route path="/comment" element={<Comment />} />
         <Route path="/wishList" element={<WishList />} />
+        <Route path="/stripe" element={<PaymentForm />} />
     </Routes>
   </BrowserRouter>
 );

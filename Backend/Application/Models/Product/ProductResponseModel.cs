@@ -7,6 +7,7 @@ public class ProductResponseModel : BaseResponseModel
     public string Title { get; set; }
     public string Category { get; set; }
     public string? SubCategory { get; set; }
+    public string? ConfigCategory { get; set; }
     public string? Geometry { get; set; } 
     public string Image { get; set; }
     public string Description { get; set; }

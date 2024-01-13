@@ -1,16 +1,17 @@
 using System.Text;
-using System.Text.Json.Serialization;
+using Stripe;
 using Application;
 using Application.Services;
 using CloudinaryDotNet;
+using Core.Domain.Entity;
 using Core.Ports;
 using Infrastructure.DbContext;
 using Infrastructure.Adapters;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using RailRideBMXHexagonale.Middleware;
+using Account = CloudinaryDotNet.Account;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,8 +19,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DataBaseConnection")));
 builder.Services.AddScoped<IEmailService, EmailService>();
 
-builder.Services.AddScoped<IProductRepository, ProductRepository>();
-builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<IProductRepository, ProductRepository>(); 
+builder.Services.AddScoped<IProductService, ProductsService>();
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
@@ -37,11 +38,18 @@ builder.Services.AddScoped<ICommentService, CommentService>();
 builder.Services.AddScoped<ILikeRepository, LikeRepository>();
 builder.Services.AddScoped<ILikeService, LikeService>();
 
+builder.Services.AddScoped<IConfigurationBMXRepository, ConfigurationBMXRepository>();
+builder.Services.AddScoped<IConfigurationBMXService, ConfigurationBmxService>();
+
+builder.Services.AddScoped<IStripeService, StripeService>();
+
+builder.Services.AddHostedService<TokenCleanupService>();
+
 builder.Services.AddCors(options =>
 {
-    options.AddDefaultPolicy(builder =>
+    options.AddDefaultPolicy(builders =>
     {
-        builder.AllowAnyOrigin()
+        builders.AllowAnyOrigin()
             .AllowAnyMethod()
             .AllowAnyHeader()
             .WithExposedHeaders("Content-Type");
@@ -74,6 +82,7 @@ builder.Services.AddSession(options =>
     options.Cookie.IsEssential = true;
     options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
 });
+StripeConfiguration.ApiKey = "sk_test_51OVAt3ClaClP8ajK7CxwZkmknJUIJLRm4tjHytQKSNDkkYqxkRZU4qiHLDYONUIfIeSnOEmftzE9eAIxBNWWzUmB005vBtH7TE";
 
 Account account = new Account(
     "dnmiqn9pk",

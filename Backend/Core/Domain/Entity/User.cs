@@ -11,4 +11,7 @@ public class User
     public string Password { get; set; }
     public UserRole? Role { get; set; }
     public ICollection<Like> Like { get; set; }
+    public ICollection<ConfigurationBMX> Configurations { get; set; }
+    public string? ResetPassWordToken { get; set; }
+    public DateTime? ResetPasswordTokenExpiration  { get; set; }
 }

@@ -9,5 +9,6 @@ public class Comment
     public Product Product { set; get; }
     public int Rating { set; get; }
     public string CommentText { set; get; }
+    public bool IsReported { get; set; }
     public DateTime DatePosted { set; get; }
 }

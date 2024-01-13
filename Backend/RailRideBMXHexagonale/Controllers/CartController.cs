@@ -47,10 +47,19 @@ public class CartController : ApiController
     [HttpGet]
     [Route("GetProducts")]
     public async Task<IActionResult> GetProductsInCart()
-    {   
-        HttpContext.Request.Cookies.TryGetValue(SessionName, out var sessionId);
-        var products = await _cartService.GetProductInCartAsync(sessionId);
-        return Ok(products);
+    {  
+        var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        if (string.IsNullOrEmpty(userId))
+        {
+            HttpContext.Request.Cookies.TryGetValue(SessionName, out var sessionId);
+            var productsSession = await _cartService.GetProductInCartAsync(sessionId);
+            return Ok(productsSession);
+        }
+        else
+        {
+            var productsUser = await _cartService.GetProductInCartByUserAsync(userId);
+            return Ok(productsUser);
+        }
     }
     
     [HttpPost]
@@ -74,5 +83,24 @@ public class CartController : ApiController
 
         await _cartService.UpdateProductQuantityAsync(cartId, productId, newQuantity);
         return Ok();
+    }
+    
+    [HttpGet]
+    [Route("UserCarts/")]
+    public async Task<IActionResult> GetPaidCartsByUserId()
+    {
+        var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        if (!string.IsNullOrEmpty(userId))
+        {
+            var carts = await _cartService.GetPaidCartsByUserIdAsync(userId);
+            return Ok(carts);
+            
+        }
+        else
+        {
+            HttpContext.Request.Cookies.TryGetValue(SessionName, out var sessionId);
+            var carts = await _cartService.GetPaidCartsBySessionIdAsync(sessionId);
+            return Ok(carts);
+        }
     }
 }

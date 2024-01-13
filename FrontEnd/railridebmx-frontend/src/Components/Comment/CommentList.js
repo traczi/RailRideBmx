@@ -1,24 +1,28 @@
 // CommentsList.js
 import React, { useState, useEffect } from "react";
 import { getComments } from "../../Services/CommentService.js";
+import {getUserIdFromJWT} from "../Login/Auth";
+import CommentItem from "./CommentItem";
+import "./Comment.css"
 
 function CommentList({ productId }) {
   const [comments, setComments] = useState([]);
+  const currentUserId = getUserIdFromJWT();
+  const fetchAndSetComments  = async () => {
+    try {
+      const commentsDataUser = await getComments(productId);
+      setComments(commentsDataUser);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
-    const fetchComments = async () => {
-      try {
-        const commentsData = await getComments(productId);
-        setComments(commentsData);
-        console.log(productId);
-      } catch (error) {
-        console.log(error);
-      }
-    };
 
-    fetchComments();
-  }, [productId]);
+    fetchAndSetComments ();
+  }, [currentUserId, productId])
 
+  console.log(comments.userId);
   return (
     <div>
       <h3>Comments</h3>
@@ -26,8 +30,12 @@ function CommentList({ productId }) {
         <ul>
           {comments.map((comment, index) => (
             <li key={index}>
-              <p>{comment.commentText}</p>
-              {/* <p>Rating: {comment.rating}</p> */}
+                  <CommentItem
+                      key={comment.id}
+                      comment={comment}
+                      currentUserId={currentUserId}
+                      onCommentChange={fetchAndSetComments}
+                  />
             </li>
           ))}
         </ul>

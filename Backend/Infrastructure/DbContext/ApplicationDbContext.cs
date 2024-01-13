@@ -16,6 +16,8 @@ public class ApplicationDbContext : Microsoft.EntityFrameworkCore.DbContext
     public DbSet<ProductCart> ProductCarts { get; set; } = null!;
     public DbSet<Comment> Comments { get; set; } = null!;
     public DbSet<Like> Likes { get; set; } = null!;
+    public DbSet<ConfigurationBMX> ConfigurationsBMX { get; set; } = null!;
+
 
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -75,6 +77,15 @@ public class ApplicationDbContext : Microsoft.EntityFrameworkCore.DbContext
             entity.HasOne(l => l.Product)
                 .WithMany(p => p.Like)
                 .HasForeignKey(l => l.ProductId);
+        });
+
+        modelBuilder.Entity<ConfigurationBMX>(entity =>
+        {
+            entity.HasKey(c => c.ConfigurationId);
+
+            entity.HasOne(c => c.User)
+                .WithMany(u => u.Configurations)
+                .HasForeignKey(c => c.UserId);
         });
     }
 }

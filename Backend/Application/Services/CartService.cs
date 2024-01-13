@@ -9,12 +9,14 @@ public class CartService : ICartService
 {
 
     private readonly ICartRepository _cartRepository;
+    private readonly IProductRepository _productRepository;
     private readonly IImageService _imageService;
 
-    public CartService(ICartRepository cartRepository,IImageService imageService )
+    public CartService(ICartRepository cartRepository,IImageService imageService, IProductRepository productRepository )
     {
         _cartRepository = cartRepository;
         _imageService = imageService;
+        _productRepository = productRepository;
 
     }
 
@@ -59,7 +61,37 @@ public class CartService : ICartService
                 Image = _imageService.ImageUrl(product.Image),
                 Price = product.Price,
                 Quantity = product.Quantity,
-                CartQuantity = productCart?.Quantity ?? 0 // Si aucun ProductCart n'est trouvé, la quantité est 0
+                CartQuantity = productCart?.Quantity ?? 0
+            });
+        }
+
+        return productsDto;
+    }
+    
+    public async Task<List<ProductDto>> GetProductInCartByUserAsync(string userId)
+    {
+        var cart = await _cartRepository.GetCartByUserIdAsync(userId); 
+        if (cart == null)
+        {
+            return new List<ProductDto>();
+        }
+
+        var products = await _cartRepository.GetProductInCartAsync(cart.Id);
+    
+        var productsDto = new List<ProductDto>();
+
+        foreach (var product in products)
+        {
+            var productCart = cart.ProductCarts.FirstOrDefault(pc => pc.ProductId == product.Id);
+
+            productsDto.Add(new ProductDto
+            {
+                Id = product.Id,
+                Title = product.Title,
+                Image = _imageService.ImageUrl(product.Image),
+                Price = product.Price,
+                Quantity = product.Quantity,
+                CartQuantity = productCart?.Quantity ?? 0
             });
         }
 
@@ -75,5 +107,74 @@ public class CartService : ICartService
         await _cartRepository.UpdateProductQuantityAsync(cartId, productId, newQuantity);
     }
 
+    public async Task<List<CartDto>> GetPaidCartsByUserIdAsync(string userId)
+    {
+        var paidCarts = await _cartRepository.GetCartPaidByUserIdAsync(userId);
+        var cartDtos = new List<CartDto>();
 
+        foreach (var cart in paidCarts)
+        {
+            var productsDto = new List<ProductDto>();
+
+            foreach (var productCart in cart.ProductCarts)
+            {
+                var product = await _productRepository.GetProductByIdAsync(productCart.ProductId);
+                productsDto.Add(new ProductDto
+                {
+                    Id = product.Id,
+                    Title = product.Title,
+                    Image = _imageService.ImageUrl(product.Image),
+                    Price = product.Price,
+                    Quantity = product.Quantity,
+                    CartQuantity = productCart.Quantity
+                });
+            }
+
+            cartDtos.Add(new CartDto
+            {
+                Id = cart.Id,
+                ProductCarts = productsDto
+            });
+        }
+
+        return cartDtos;
+    }
+
+    public async Task<List<CartDto>> GetPaidCartsBySessionIdAsync(string sessionId)
+    {
+        var paidCarts = await _cartRepository.GetCartPaidBySessionIdAsync(sessionId);
+        var cartDtos = new List<CartDto>();
+
+        foreach (var cart in paidCarts)
+        {
+            var productsDto = new List<ProductDto>();
+
+            foreach (var productCart in cart.ProductCarts)
+            {
+                var product = await _productRepository.GetProductByIdAsync(productCart.ProductId);
+                productsDto.Add(new ProductDto
+                {
+                    Id = product.Id,
+                    Title = product.Title,
+                    Image = _imageService.ImageUrl(product.Image),
+                    Price = product.Price,
+                    Quantity = product.Quantity,
+                    CartQuantity = productCart.Quantity
+                });
+            }
+
+            cartDtos.Add(new CartDto
+            {
+                Id = cart.Id,
+                ProductCarts = productsDto
+            });
+        }
+
+        return cartDtos;
+    }
+
+    public async Task<bool> UpdateCartStatus(Guid cartId)
+    {
+        return await _cartRepository.UpdateCartStatus(cartId);
+    }
 }

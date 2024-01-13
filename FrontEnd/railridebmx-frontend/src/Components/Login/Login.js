@@ -26,7 +26,7 @@ const Login = () => {
         const responseData = await res.json();
         const token = responseData.data.token;
         localStorage.setItem("jwtToken", token);
-        navigate("/AllProduct");
+        navigate("/");
       }
     } catch (err) {
       console.log(err);

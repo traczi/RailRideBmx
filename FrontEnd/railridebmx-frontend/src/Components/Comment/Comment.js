@@ -1,18 +1,22 @@
 // FormComment.js
 import React, { useState } from "react";
 import { postComments } from "../../Services/CommentService.js";
+import RatingStars from "./RatingStars";
 
 function Comment({ productId }) {
   const [commentText, setCommentText] = useState("");
-  const [rating, setRating] = useState("");
+  const [rating, setRating] = useState(0);
 
+  const handleRatingChange = (newRating) => {
+    setRating(newRating);
+  };
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     const commentData = {
       productId,
       commentText,
-      rating: parseInt(rating, 10),
+      rating,
     };
 
     try {
@@ -34,17 +38,7 @@ function Comment({ productId }) {
           required
         />
       </label>
-      <label>
-        Rating:
-        <input
-          type="number"
-          value={rating}
-          onChange={(e) => setRating(e.target.value)}
-          min="1"
-          max="5"
-          required
-        />
-      </label>
+      <RatingStars onRatingChange={handleRatingChange}/>
       <button type="submit">Submit Comment</button>
     </form>
   );

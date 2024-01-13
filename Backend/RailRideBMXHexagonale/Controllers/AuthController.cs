@@ -33,4 +33,24 @@ public class AuthController : ApiController
             token = loginUser.AsT0
         });
     }
+    [HttpPost("RequestPasswordReset")]
+    public async Task<IActionResult> RequestPasswordReset(string email)
+    {
+        await _userService.RequestPasswordResetAsync(email);
+        return Ok("Si votre e-mail est enregistré, vous recevrez un lien pour réinitialiser votre mot de passe.");
+    }
+    
+    [HttpPost("reset-password")]
+    public async Task<IActionResult> ResetPassword(string email, string token, string newPassword)
+    {
+        var result = await _userService.ResetPasswordAsync(email, token, newPassword);
+        if (!result)
+        {
+            return BadRequest("Réinitialisation du mot de passe échouée.");
+        }
+
+        return Ok("Mot de passe réinitialisé avec succès.");
+    }
+
+
 }

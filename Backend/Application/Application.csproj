@@ -18,7 +18,9 @@
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
       <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.0" />
+      <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
       <PackageReference Include="OneOf" Version="3.0.263" />
+      <PackageReference Include="Stripe.net" Version="43.9.0" />
       <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.8.0" />
     </ItemGroup>
 

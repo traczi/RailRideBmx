@@ -11,6 +11,7 @@ import QuantitySelector from "./QuantitySelector";
 import AnimatedTitle from "./AnimationTitle";
 import AddToCartButton from "./AddCartButton";
 import Loading from "../../Loading/Loading";
+import AverageRating from "./AverageRating";
 const LikeButton = React.lazy(() =>  import("../../Like/LikeButton"));
 
 function ProductDetails() {
@@ -79,11 +80,7 @@ function ProductDetails() {
           <div className="detailProduct">
             <h1 className="titleProduct">{productsDetails.title}</h1>
             <div>
-              <FontAwesomeIcon className="iconStar" icon={faStar} />
-              <FontAwesomeIcon className="iconStar" icon={faStar} />
-              <FontAwesomeIcon className="iconStar" icon={faStar} />
-              <FontAwesomeIcon className="iconStar" icon={faStar} />
-              <FontAwesomeIcon className="iconStar" icon={faStar} />
+              <AverageRating productId={productsDetails.id} />
             </div>
             <div className="like-button">
 

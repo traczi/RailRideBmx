@@ -5,12 +5,12 @@ using Core.Ports;
 
 namespace Application.Services;
 
-public class ProductService : IProductService
+public class ProductsService : IProductService
 {
     private readonly IProductRepository _productRepository;
     private readonly IImageService _imageService;
 
-    public ProductService(IProductRepository productRepository,IImageService imageService )
+    public ProductsService(IProductRepository productRepository,IImageService imageService )
     {
         _productRepository = productRepository;
         _imageService = imageService;
@@ -59,7 +59,8 @@ public class ProductService : IProductService
                 Image = url,
                 Title = product.Title,
                 Quantity = product.Quantity,
-                Category = product.Category
+                Category = product.Category,
+                ConfigCategory = product.ConfigCategory
             };
             
             productsWithImage.Add(productResponse);
@@ -87,6 +88,7 @@ public class ProductService : IProductService
             Quantity = product.Quantity,
             Category = product.Category,
             SubCategory = product.SubCategory,
+            ConfigCategory = product.ConfigCategory,
             Geometry = product.Geometry
             
         };
@@ -110,6 +112,7 @@ public class ProductService : IProductService
             Quantity = productResponseModel.Quantity,
             Category = productResponseModel.Category,
             SubCategory = productResponseModel.SubCategory,
+            ConfigCategory = productResponseModel.ConfigCategory,
             Geometry = productResponseModel.Geometry
         };
         var createProduct = await _productRepository.CreateProduct(product);
@@ -127,6 +130,7 @@ public class ProductService : IProductService
             Quantity = createProduct.Quantity,
             Category = createProduct.Category,
             SubCategory = createProduct.SubCategory,
+            ConfigCategory = createProduct.ConfigCategory,
             Geometry = createProduct.Geometry
         };
     }
@@ -167,6 +171,7 @@ public class ProductService : IProductService
                 Quantity = product.Quantity,
                 Category = product.Category,
                 SubCategory = product.SubCategory,
+                ConfigCategory = product.ConfigCategory,
                 Geometry = product.Geometry
             
             };
@@ -200,6 +205,7 @@ public class ProductService : IProductService
                 Quantity = product.Quantity,
                 Category = product.Category,
                 SubCategory = product.SubCategory,
+                ConfigCategory = product.ConfigCategory,
                 Geometry = product.Geometry
             
             };

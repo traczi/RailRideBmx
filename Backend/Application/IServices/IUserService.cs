@@ -8,5 +8,6 @@ public interface IUserService
 {
     Task<User> CreateUserAsync(UserResponseModel userResponseModel);
     Task<OneOf<string>> LoginUserAsync(UserLoginRequestModel userLoginRequestModel);
-    Task<User> ForgotPassword(UserForgotPasswordRequestModel userForgotPassword);
+    Task RequestPasswordResetAsync(string email);
+    Task<bool> ResetPasswordAsync(string email, string token, string newPassword);
 }

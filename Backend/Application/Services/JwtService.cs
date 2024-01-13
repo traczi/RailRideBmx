@@ -43,7 +43,6 @@ public class JwtService : IJwtService
 
     public bool VerifyToken(string token)
     {
-        
         return true;
     }
 }

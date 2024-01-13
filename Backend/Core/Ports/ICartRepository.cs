@@ -12,6 +12,9 @@ public interface ICartRepository
      Task<Cart> GetCartByUserIdAsync(string userId);
      Task<List<Product>> GetProductInCartAsync(Guid cartId);
      Task UpdateProductQuantityAsync(Guid cartId, Guid productId, int newQuantity);
-
+     Task<List<Cart>> GetCartPaidByUserIdAsync(string userId);
+     Task<List<Cart>> GetCartPaidBySessionIdAsync(string sessionId);
+     Task<bool> UpdateCartStatus(Guid cartId);
+     Task<Guid?> GetUnpaidCartIdByUserIdOrSessionIdAsync(string userId);
 
 }

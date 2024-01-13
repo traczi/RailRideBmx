@@ -23,7 +23,6 @@ function Cart() {
         );
       }
     };
-
     initFetch();
   }, []);
 
@@ -109,7 +108,7 @@ function Cart() {
           <div className={styles.cartSummary}>
             <h2 className={styles.orderTitle}>ORDER TOTAL</h2>
             <p className={styles.totalPrice}>{total.toFixed(2)} €</p>
-            <button className={styles.orderButton}>Checkout</button>
+            <button className={styles.orderButton}><a href="/stripe">checkout</a></button>
           </div>
         </section>
       </div>

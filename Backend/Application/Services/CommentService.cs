@@ -33,20 +33,54 @@ public class CommentService : ICommentService
         var comment = await _commentRepository.GetCommentByProductIdAsync(productId);
         var commentDto = comment.Select(c => new CommentDto
         {
+            Id = c.Id,
+            UserId = c.UserId,
             CommentText = c.CommentText
         }).ToList();
         return commentDto;
     }
 
-    public async Task<bool> DeleteUserComment(Guid commentId, Guid userId)
+    public async Task DeleteUserComment(Guid commentId, Guid userId, string userRole)
     {
         var comment = await _commentRepository.GetCommentById(commentId);
-        if (comment != null && comment.UserId == userId)
+        if (comment == null)
         {
-            await _commentRepository.DeleteUserComment(comment);
-            return true;
+            throw new InvalidOperationException("Comment not found");
         }
 
-        return false;
+        bool isAdmin = userRole == "Admin";
+        if (comment.UserId != userId && !isAdmin)
+        {
+            throw new InvalidOperationException("User does not have the permission to do this");
+        }
+
+        await _commentRepository.DeleteUserComment(comment);
+    }
+
+    public async Task<double> CalculateAverageRatingAsync(Guid productId)
+    {
+        return await _commentRepository.GetAverageRatingAsync(productId);
+    }
+
+    public async Task ReportComment(Guid commentId)
+    {
+        await _commentRepository.ReportedCommentAsync(commentId);
+    }
+
+    public async Task<List<Comment>> GetReportedCommentAsync()
+    {
+        return await _commentRepository.GetReportedCommentAsync();
+    }
+
+    public async Task UpdateCommentAsync(Guid commentId, Guid userId, string newCommentText)
+    {
+        var comment = await _commentRepository.GetCommentById(commentId);
+        if (comment == null || comment.UserId != userId)
+        {
+            throw new InvalidOperationException("Comment not found or user are not enable to do this");
+        }
+
+        comment.CommentText = newCommentText;
+        await _commentRepository.UpdateCommentAsync(comment);
     }
 }
