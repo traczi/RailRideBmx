@@ -1,11 +1,10 @@
-﻿using Core.Domain.DTOs;
-using Core.Domain.Entity;
+﻿using Core.DTOs;
 
-namespace Application;
+namespace Application.IServices;
 
 public interface IConfigurationBMXService
 {
-    Task<ConfigurationBMXDto> CreateOrUpdateConfigurationAsync(ConfigurationBMXDto configurationBmx);
+    Task<ConfigurationBmxDto> CreateOrUpdateConfigurationAsync(ConfigurationBmxDto configurationBmx);
     Task ValidationComponent(Guid? productId, string category);
     Task<float> CalculateTotalPriceAsync(Guid configId);
     Task<float> GetProductPrice(Guid? productId);

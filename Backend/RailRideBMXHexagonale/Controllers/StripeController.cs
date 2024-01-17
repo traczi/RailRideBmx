@@ -1,7 +1,8 @@
 ﻿using System.Security.Claims;
 using Application;
-using Core.Domain.DTOs;
+using Application.IServices;
 using Core.Domain.Entity;
+using Core.DTOs;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Stripe;
@@ -25,20 +26,23 @@ public class StripeController : ApiController
     public async Task<IActionResult> CreatePaymentIntent()
     {
         var cart = new List<ProductDto>();
+        var cartId = new Guid();
         var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
         Console.WriteLine("=============" +userId);
         if (string.IsNullOrEmpty(userId))
         {
             HttpContext.Request.Cookies.TryGetValue(SessionName, out var sessionId);
             cart = await _cartService.GetProductInCartAsync(sessionId);
+            cartId = await _cartService.GetCartIdBySessionIdAsync(sessionId);
         }
         else
         {
             cart = await _cartService.GetProductInCartByUserAsync(userId);
+            cartId = await _cartService.GetCartIdByUserIdAsync(userId);
         }
         var paymentIntent = await _stripeService.CreatePaymentIntentAsync(cart, userId);
-
-        return Ok(new { clientSecret = paymentIntent.ClientSecret });
+        var stringCartId = cartId;
+        return Ok(new { clientSecret = paymentIntent.ClientSecret, stringCartId });
     }
     
     [HttpPost]

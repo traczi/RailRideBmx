@@ -1,6 +1,6 @@
 ﻿using Core.Domain.Entity;
 
-namespace Core.Ports;
+namespace Infrastructure.Ports;
 
 public interface ICommentRepository
 {

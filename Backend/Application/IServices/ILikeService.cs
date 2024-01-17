@@ -1,6 +1,6 @@
 ﻿using Core.Domain.Entity;
 
-namespace Application;
+namespace Application.IServices;
 
 public interface ILikeService
 {

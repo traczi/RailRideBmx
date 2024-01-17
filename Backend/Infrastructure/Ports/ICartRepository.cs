@@ -1,6 +1,6 @@
 ﻿using Core.Domain.Entity;
 
-namespace Core.Ports;
+namespace Infrastructure.Ports;
 
 public interface ICartRepository
 {
@@ -16,5 +16,7 @@ public interface ICartRepository
      Task<List<Cart>> GetCartPaidBySessionIdAsync(string sessionId);
      Task<bool> UpdateCartStatus(Guid cartId);
      Task<Guid?> GetUnpaidCartIdByUserIdOrSessionIdAsync(string userId);
+     Task<Guid> GetCartIdBySessionIdAsync(string session);
+     Task<Guid> GetCartIdByUserIdAsync(string userId);
 
 }

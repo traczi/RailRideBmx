@@ -17,6 +17,7 @@ public class ApplicationDbContext : Microsoft.EntityFrameworkCore.DbContext
     public DbSet<Comment> Comments { get; set; } = null!;
     public DbSet<Like> Likes { get; set; } = null!;
     public DbSet<ConfigurationBMX> ConfigurationsBMX { get; set; } = null!;
+    public DbSet<Address> Addresses { get; set; } = null!;
 
 
 
@@ -41,6 +42,10 @@ public class ApplicationDbContext : Microsoft.EntityFrameworkCore.DbContext
             entity.HasMany(c => c.ProductCarts)
                 .WithOne(pc => pc.Cart)
                 .HasForeignKey(pc => pc.CartId);
+            
+            entity.HasOne(c => c.Address)
+                .WithOne(a => a.Cart)
+                .HasForeignKey<Address>(a => a.CartId);
         });
         
         modelBuilder.Entity<ProductCart>(entity =>

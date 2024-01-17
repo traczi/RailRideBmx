@@ -1,6 +1,6 @@
 ﻿using Core.Domain.Entity;
-using Core.Ports;
 using Infrastructure.DbContext;
+using Infrastructure.Ports;
 
 namespace Infrastructure.Adapters;
 

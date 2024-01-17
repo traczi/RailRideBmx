@@ -49,3 +49,5 @@ C:\Git\RailRideBMXHexagonale\Backend\Application\obj\Debug\net6.0\refint\Applica
 C:\Git\RailRideBMXHexagonale\Backend\Application\obj\Debug\net6.0\Application.pdb
 C:\Git\RailRideBMXHexagonale\Backend\Application\obj\Debug\net6.0\Application.genruntimeconfig.cache
 C:\Git\RailRideBMXHexagonale\Backend\Application\obj\Debug\net6.0\ref\Application.dll
+C:\Git\RailRideBMXHexagonale\Backend\Application\bin\Debug\net6.0\Infrastructure.dll
+C:\Git\RailRideBMXHexagonale\Backend\Application\bin\Debug\net6.0\Infrastructure.pdb

@@ -1,6 +1,7 @@
-﻿using Core.Domain.DTOs;
+﻿using Application.IServices;
 using Core.Domain.Entity;
-using Core.Ports;
+using Core.DTOs;
+using Infrastructure.Ports;
 using Stripe;
 
 namespace Application.Services;
@@ -16,7 +17,7 @@ public class ConfigurationBmxService : IConfigurationBMXService
         _productRepository = productRepository;
     }
 
-    public async Task<ConfigurationBMXDto> CreateOrUpdateConfigurationAsync(ConfigurationBMXDto configurationBmx)
+    public async Task<ConfigurationBmxDto> CreateOrUpdateConfigurationAsync(ConfigurationBmxDto configurationBmx)
     {
         if (configurationBmx.FrameId.HasValue) await ValidationComponent(configurationBmx.FrameId.Value, "Frame");
         if (configurationBmx.HandlebarId.HasValue) await ValidationComponent(configurationBmx.HandlebarId.Value, "Handlebar");
@@ -47,6 +48,7 @@ public class ConfigurationBmxService : IConfigurationBMXService
         var configCreate = await _configurationBmxRepository.CreateOrUpdateConfigurationAsync(config);
         return ConvertEntityToDto(configCreate);
     }
+
 
     public async Task ValidationComponent(Guid? productId, string category)
     {
@@ -109,7 +111,7 @@ public class ConfigurationBmxService : IConfigurationBMXService
         return product?.Price ?? 0;
     }
 
-    private ConfigurationBMX ConvertDtoToEntity(ConfigurationBMXDto dto)
+    private ConfigurationBMX ConvertDtoToEntity(ConfigurationBmxDto dto)
     {
         return new ConfigurationBMX
         {
@@ -143,9 +145,9 @@ public class ConfigurationBmxService : IConfigurationBMXService
         };
     }
     
-    private ConfigurationBMXDto ConvertEntityToDto(ConfigurationBMX entity)
+    private ConfigurationBmxDto ConvertEntityToDto(ConfigurationBMX entity)
     {
-        return new ConfigurationBMXDto
+        return new ConfigurationBmxDto
         {
             NameConfiguration = entity.NameConfiguration,
             UserId = entity.UserId,

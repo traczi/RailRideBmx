@@ -1,12 +1,13 @@
 using System.Text;
 using Stripe;
 using Application;
+using Application.IServices;
 using Application.Services;
 using CloudinaryDotNet;
 using Core.Domain.Entity;
-using Core.Ports;
 using Infrastructure.DbContext;
 using Infrastructure.Adapters;
+using Infrastructure.Ports;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -40,6 +41,9 @@ builder.Services.AddScoped<ILikeService, LikeService>();
 
 builder.Services.AddScoped<IConfigurationBMXRepository, ConfigurationBMXRepository>();
 builder.Services.AddScoped<IConfigurationBMXService, ConfigurationBmxService>();
+
+builder.Services.AddScoped<IAdressRepository, AdressRepository>();
+builder.Services.AddScoped<IAddressService, AddressService>();
 
 builder.Services.AddScoped<IStripeService, StripeService>();
 

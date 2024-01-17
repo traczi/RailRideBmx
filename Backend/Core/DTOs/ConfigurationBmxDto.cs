@@ -1,6 +1,6 @@
-﻿namespace Core.Domain.DTOs;
+﻿namespace Core.DTOs;
 
-public class ConfigurationBMXDto
+public class ConfigurationBmxDto
 {
     public string NameConfiguration { get; set; }
     public Guid UserId { get; set; }

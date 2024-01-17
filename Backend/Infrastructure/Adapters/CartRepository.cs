@@ -1,6 +1,6 @@
 ﻿using Core.Domain.Entity;
-using Core.Ports;
 using Infrastructure.DbContext;
+using Infrastructure.Ports;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Adapters;
@@ -43,66 +43,65 @@ public class CartRepository : ICartRepository
 
     public async Task AddProductToCartAsync(Guid cartId, Guid productId, int quantity)
     {
-        var cart = await _context.Carts.Include(p => p.ProductCarts).FirstOrDefaultAsync(p => p.Id == cartId);
-        if (cart == null || cart.IsPayd)
+    var cart = await _context.Carts.Include(p => p.ProductCarts).FirstOrDefaultAsync(p => p.Id == cartId);
+    if (cart == null || cart.IsPayd)
+    {
+        if (cart.UserId != null)
         {
-            if (cart.UserId != null)
+            var newCart = new Cart
             {
-                var newCart = new Cart
-                {
-                    UserId = cart.UserId,
-                    IsPayd = false,
-                };
-                _context.Carts.Add(newCart);
-                await _context.SaveChangesAsync();
+                UserId = cart.UserId,
+                IsPayd = false,
+            };
+            _context.Carts.Add(newCart);
+            await _context.SaveChangesAsync();
 
-                cartId = newCart.Id;
-            }
-            else
-            {
-                var newCart = new Cart
-                {
-                    SessionId = cart.SessionId,
-                    IsPayd = false,
-                };
-                
-
-                _context.Carts.Add(newCart);
-                await _context.SaveChangesAsync();
-
-                cartId = newCart.Id;
-            }
-        }
-        var product = await _context.Products.FirstOrDefaultAsync(p => p.Id == productId);
-        var productCart =
-            await _context.ProductCarts.FirstOrDefaultAsync(pc =>
-                pc.CartId == cartId && pc.ProductId == productId);
-
-        int maxQuantity = product.Quantity;
-        if (productCart != null)
-        {
-            productCart.Quantity = Math.Min(productCart.Quantity + quantity, maxQuantity);
+            cartId = newCart.Id;
         }
         else
         {
-            var newProductCart = new ProductCart
+            var newCart = new Cart
             {
-                CartId = cartId,
-                ProductId = productId,
-                Quantity = quantity
+                SessionId = cart.SessionId,
+                IsPayd = false,
             };
-            _context.ProductCarts.Add(newProductCart);
-        }
+            
 
-        try
-        { 
+            _context.Carts.Add(newCart);
             await _context.SaveChangesAsync();
+
+            cartId = newCart.Id;
         }
-        catch (DbUpdateException e)
-        { 
-            Console.WriteLine( "L'erreur est =" + e.InnerException.Message);
-        }
-        
+    }
+    var product = await _context.Products.FirstOrDefaultAsync(p => p.Id == productId);
+    var productCart =
+        await _context.ProductCarts.FirstOrDefaultAsync(pc =>
+            pc.CartId == cartId && pc.ProductId == productId);
+
+    int maxQuantity = product.Quantity;
+    if (productCart != null)
+    {
+        productCart.Quantity = Math.Min(productCart.Quantity + quantity, maxQuantity);
+    }
+    else
+    {
+        var newProductCart = new ProductCart
+        {
+            CartId = cartId,
+            ProductId = productId,
+            Quantity = quantity
+        };
+        _context.ProductCarts.Add(newProductCart);
+    }
+
+    try
+    { 
+        await _context.SaveChangesAsync();
+    }
+    catch (DbUpdateException e)
+    { 
+        Console.WriteLine( "L'erreur est =" + e.InnerException.Message);
+    } 
     }
 
     public async Task TransferCartFromSessionToUserAsync(string sessionId, string userId)
@@ -149,7 +148,7 @@ public class CartRepository : ICartRepository
 
     public async Task<List<Cart>> GetCartPaidByUserIdAsync(string userId)
     {
-       return await _context.Carts.Include(p => p.ProductCarts).ThenInclude(pc => pc.Product).Where(p => p.UserId == userId && p.IsPayd == true).ToListAsync();
+        return await _context.Carts.Include(p => p.ProductCarts).ThenInclude(pc => pc.Product).Where(p => p.UserId == userId && p.IsPayd == true).ToListAsync();
     }
 
     public async Task<List<Cart>> GetCartPaidBySessionIdAsync(string sessionId)
@@ -181,5 +180,17 @@ public class CartRepository : ICartRepository
         }
 
         return cart?.Id;
+    }
+    
+    public async Task<Guid> GetCartIdByUserIdAsync(string userId)
+    {
+        var cart = await _context.Carts.FirstOrDefaultAsync(c => c.UserId == userId);
+        return cart?.Id ?? Guid.Empty;
+    }
+    
+    public async Task<Guid> GetCartIdBySessionIdAsync(string session)
+    {
+        var cart = await _context.Carts.FirstOrDefaultAsync(c => c.SessionId.ToString() == session);
+        return cart?.Id ?? Guid.Empty;
     }
 }

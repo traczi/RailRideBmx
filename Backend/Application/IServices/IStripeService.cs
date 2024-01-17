@@ -1,8 +1,7 @@
-﻿using Core.Domain.DTOs;
-using Core.Domain.Entity;
+﻿using Core.DTOs;
 using Stripe;
 
-namespace Application;
+namespace Application.IServices;
 
 public interface IStripeService
 {

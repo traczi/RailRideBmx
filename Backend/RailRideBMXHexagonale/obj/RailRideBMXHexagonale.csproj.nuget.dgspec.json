@@ -30,6 +30,9 @@
             "projectReferences": {
               "C:\\Git\\RailRideBMXHexagonale\\Backend\\Core\\Core.csproj": {
                 "projectPath": "C:\\Git\\RailRideBMXHexagonale\\Backend\\Core\\Core.csproj"
+              },
+              "C:\\Git\\RailRideBMXHexagonale\\Backend\\Infrastructure\\Infrastructure.csproj": {
+                "projectPath": "C:\\Git\\RailRideBMXHexagonale\\Backend\\Infrastructure\\Infrastructure.csproj"
               }
             }
           }

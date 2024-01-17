@@ -1,7 +1,8 @@
-﻿using Core.Domain.DTOs;
+﻿
 using Core.Domain.Entity;
+using Core.DTOs;
 
-namespace Core.Ports;
+namespace Infrastructure.Ports;
 
 public interface IProductRepository
 {

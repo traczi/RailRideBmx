@@ -1,7 +1,8 @@
-﻿using Application.Models.Product;
-using Core.Domain.DTOs;
+﻿using Application.IServices;
+using Application.Models.Product;
 using Core.Domain.Entity;
-using Core.Ports;
+using Core.DTOs;
+using Infrastructure.Ports;
 
 namespace Application.Services;
 

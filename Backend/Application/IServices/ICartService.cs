@@ -1,7 +1,7 @@
-﻿using Core.Domain.DTOs;
-using Core.Domain.Entity;
+﻿using Core.Domain.Entity;
+using Core.DTOs;
 
-namespace Application;
+namespace Application.IServices;
 
 public interface ICartService
 {
@@ -15,5 +15,7 @@ public interface ICartService
     Task<List<CartDto>> GetPaidCartsByUserIdAsync(string userId);
     Task<List<CartDto>> GetPaidCartsBySessionIdAsync(string sessionId);
     Task<bool> UpdateCartStatus(Guid cartId);
+    Task<Guid> GetCartIdBySessionIdAsync(string sessionId);
+    Task<Guid> GetCartIdByUserIdAsync(string userId);
 
 }

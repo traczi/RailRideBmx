@@ -2,10 +2,11 @@
 using System.Text.RegularExpressions;
 using System.Web;
 using Application.Exceptions;
+using Application.IServices;
 using Application.Models.User;
 using Core.Domain.Entity;
 using Core.Domain.Enums;
-using Core.Ports;
+using Infrastructure.Ports;
 using OneOf;
 
 namespace Application.Services;
@@ -81,7 +82,6 @@ public class UserService : IUserService
             return false;
         }
 
-        // Valider le nouveau mot de passe
         var condition = @"^(?=.*[A-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[#?!@$%^&*-])\S{7,15}$";
         Regex reg = new Regex(condition);
         if (!reg.IsMatch(newPassword))
@@ -96,6 +96,84 @@ public class UserService : IUserService
 
         return true;
     }
+
+    public async Task<List<User>> GetAllUserAsync()
+    {
+        return await _userRepository.GetAllUserAsync();
+    }
+
+    public async Task UpdateUserEmailAsync(Guid userId, string newEmail)
+    {
+        var user = await _userRepository.FindUserById(userId);
+        var conditionEmail = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+        Regex regEmail = new Regex(conditionEmail);
+        if (!regEmail.IsMatch(newEmail))
+        {
+            throw new BadRequestException("Cette adresse email est invalide !");
+        }
+        
+        if (user == null)
+        {
+            throw new InvalidOperationException("User not Found");
+        }
+
+        user.Email = newEmail;
+        await _userRepository.UpdateAsync(user);
+    }
+
+    public async Task UpdateUserNameAsync(Guid userId, UserModifyNameModel model)
+    {
+        var user = await _userRepository.FindUserById(userId);
+        if (user == null)
+        {
+            throw new InvalidOperationException("User not Found");
+        }
+
+        user.Lastname = model.LastName;
+        user.Firstname = model.FirstName;
+        await _userRepository.UpdateAsync(user);
+    }
+
+    public async Task ChangeUserPasswordAsync(Guid userId, string currentPassword, string newPassword)
+    {
+        var user = await _userRepository.FindUserById(userId);
+        if (user == null)
+        {
+            throw new InvalidOperationException("User not found.");
+        }
+
+        if (!VerifyPassword(currentPassword, user.Password))
+        {
+            throw new InvalidOperationException("Current password is incorrect.");
+        }
+        var condition = @"^(?=.*[A-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[#?!@$%^&*-])\S{7,15}$";
+        Regex reg = new Regex(condition);
+        if (!reg.IsMatch(newPassword))
+        {
+            throw new Exception("Le nouveau mot de passe ne répond pas aux exigences de sécurité.");
+        }
+
+        user.Password = HashPassword(newPassword);
+        await _userRepository.UpdateAsync(user);
+    }
+
+    public async Task<User> GetUserById(Guid userId)
+    {
+        var user = await _userRepository.FindUserById(userId);
+        return user;
+    }
+
+    private bool VerifyPassword(string inputPassword, string storedHash)
+    {
+        return BCrypt.Net.BCrypt.Verify(inputPassword, storedHash);
+    }
+
+    private string HashPassword(string password)
+    {
+        return BCrypt.Net.BCrypt.HashPassword(password);
+    }
+
+    
 
     public async Task RequestPasswordResetAsync(string email)
     {

@@ -1,7 +1,7 @@
-﻿using Core.Domain.DTOs;
-using Core.Domain.Entity;
-using Core.Ports;
+﻿using Core.Domain.Entity;
+using Core.DTOs;
 using Infrastructure.DbContext;
+using Infrastructure.Ports;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Adapters;

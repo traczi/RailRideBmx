@@ -1,5 +1,6 @@
-﻿using Core.Domain.Entity;
-using Core.Ports;
+﻿using Application.IServices;
+using Core.Domain.Entity;
+using Infrastructure.Ports;
 
 namespace Application.Services;
 

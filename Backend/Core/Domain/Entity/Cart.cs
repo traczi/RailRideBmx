@@ -7,4 +7,5 @@ public class Cart
     public string SessionId { get; set; }
     public List<ProductCart> ProductCarts { get; set; }
     public bool IsPayd { get; set; }
+    public Address Address { get; set; }
 }

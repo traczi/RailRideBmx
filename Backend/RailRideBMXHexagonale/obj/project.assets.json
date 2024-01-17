@@ -2484,6 +2484,7 @@
           "BCrypt.Net-Next": "4.0.3",
           "CloudinaryDotNet": "1.22.0",
           "Core": "1.0.0",
+          "Infrastructure": "1.0.0",
           "Microsoft.Extensions.Configuration": "6.0.0",
           "Microsoft.Extensions.Hosting": "6.0.1",
           "OneOf": "3.0.263",

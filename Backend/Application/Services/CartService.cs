@@ -1,7 +1,8 @@
 ﻿using System.Net.Mime;
-using Core.Domain.DTOs;
+using Application.IServices;
 using Core.Domain.Entity;
-using Core.Ports;
+using Core.DTOs;
+using Infrastructure.Ports;
 
 namespace Application.Services;
 
@@ -176,5 +177,15 @@ public class CartService : ICartService
     public async Task<bool> UpdateCartStatus(Guid cartId)
     {
         return await _cartRepository.UpdateCartStatus(cartId);
+    }
+    
+    public async Task<Guid> GetCartIdByUserIdAsync(string userId)
+    {
+        return await _cartRepository.GetCartIdByUserIdAsync(userId);
+    }
+    
+    public async Task<Guid> GetCartIdBySessionIdAsync(string sessionId)
+    {
+        return await _cartRepository.GetCartIdBySessionIdAsync(sessionId);
     }
 }

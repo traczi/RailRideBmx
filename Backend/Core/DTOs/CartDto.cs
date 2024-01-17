@@ -1,6 +1,5 @@
-﻿using Core.Domain.Entity;
-
-namespace Core.Domain.DTOs;
+﻿
+namespace Core.DTOs;
 
 public class CartDto
 {

@@ -1,6 +1,6 @@
 ﻿using Core.Domain.Entity;
-using Core.Ports;
 using Infrastructure.DbContext;
+using Infrastructure.Ports;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Adapters;
@@ -33,6 +33,13 @@ public class UserRepository : IUserRepository
         var a = await _context.Users.FirstOrDefaultAsync(u => u.Email == user.Email);
         return a;
     }
+
+    public async Task<User> FindUserById(Guid userId)
+    {
+        var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == userId);
+        return user;
+    }
+
     public async Task<User> FindByEmailUser(string mail)
     {
         var userMail = await _context.Users.FirstOrDefaultAsync(u => u.Email == mail);
@@ -67,5 +74,8 @@ public class UserRepository : IUserRepository
         await _context.SaveChangesAsync();
     }
 
-
+    public async Task<List<User>> GetAllUserAsync()
+    {
+        return await _context.Users.ToListAsync();
+    }
 }

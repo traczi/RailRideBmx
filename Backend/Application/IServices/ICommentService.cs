@@ -1,7 +1,7 @@
-﻿using Core.Domain.DTOs;
-using Core.Domain.Entity;
+﻿using Core.Domain.Entity;
+using Core.DTOs;
 
-namespace Application;
+namespace Application.IServices;
 
 public interface ICommentService
 {

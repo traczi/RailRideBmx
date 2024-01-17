@@ -1,7 +1,8 @@
 ﻿using System.Security.Claims;
 using Application;
-using Core.Domain.DTOs;
+using Application.IServices;
 using Core.Domain.Entity;
+using Core.DTOs;
 using Microsoft.AspNetCore.Mvc;
 
 namespace RailRideBMXHexagonale.Controllers;
@@ -16,7 +17,7 @@ public class ConfigurationBMXController : ApiController
     }
 
     [HttpPost]
-    public async Task<IActionResult> CreateOrUpdateConfiguration([FromBody]ConfigurationBMXDto configurationBmxDto)
+    public async Task<IActionResult> CreateOrUpdateConfiguration([FromBody]ConfigurationBmxDto configurationBmxDto)
     {
         try
         {

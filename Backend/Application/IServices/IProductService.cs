@@ -1,7 +1,7 @@
 ﻿using Application.Models.Product;
-using Core.Domain.DTOs;
+using Core.DTOs;
 
-namespace Application;
+namespace Application.IServices;
 
 public interface IProductService
 {
