@@ -26,10 +26,10 @@ function LikeButton({productId}) {
             const token = localStorage.getItem("jwtToken");
             if (isLiked) {
                 await unlikeProduct(productId, token);
-                toast.info("Vous n'aimez plus ce produit.");
+                toast.success("Vous n'aimez plus ce produit.");
             } else {
                 await likeProduct(productId, token);
-                toast.info("Vous avez aimé ce produit !");
+                toast.success("Vous avez aimé ce produit !");
             }
             setIsLiked(!isLiked);
         }

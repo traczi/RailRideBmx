@@ -1,3 +1,5 @@
+import {toast} from "react-toastify";
+
 const AddToCartButton = ({ productId, quantity }) => {
   const addToCart = async () => {
     const token = localStorage.getItem("jwtToken");
@@ -14,6 +16,7 @@ const AddToCartButton = ({ productId, quantity }) => {
       );
       if (response.ok) {
         console.log("Produit ajouté au panier" + productId + quantity);
+        toast.success("Produits ajouter à votre panier")
       } else {
         console.error("Erreur lors de l'ajout au panier");
       }
@@ -22,7 +25,7 @@ const AddToCartButton = ({ productId, quantity }) => {
     }
   };
 
-  return <button onClick={addToCart}>Ajouter au Panier</button>;
+  return <button className="product-AddCartButton" onClick={addToCart}>Ajouter au Panier</button>;
 };
 
 export default AddToCartButton;

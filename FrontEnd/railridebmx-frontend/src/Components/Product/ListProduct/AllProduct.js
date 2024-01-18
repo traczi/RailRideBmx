@@ -3,6 +3,7 @@ import "./Product.css";
 import NavBar from "../../NavBar/NavBar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircle } from "@fortawesome/free-solid-svg-icons";
+import {Link} from "react-router-dom";
 
 function AllProduct() {
   const [products, setProducts] = useState([]);
@@ -55,8 +56,8 @@ function AllProduct() {
       <section className="productSection">
         {products.map((product) => {
           return (
-            <div className="productList" key={product.id}>
-              <div className="productImage">
+            <Link to={`/product/${product.id}`} className="productList" key={product.id}>
+              <div className="product-productImage">
                 <img
                   alt="imageOfProduct"
                   className="image"
@@ -64,9 +65,7 @@ function AllProduct() {
                 ></img>
               </div>
               <div className="productProps">
-                <a href={`/product/${product.id}`}>
-                  <h1 className="productTitle">{product.title}</h1>
-                </a>
+                <h1 className="productTitle">{product.title}</h1>
                 <div className="quantitySection">
                   <p className="productQuantity">
                     {`${getStatusText(product.quantity)}`}
@@ -75,7 +74,7 @@ function AllProduct() {
                 </div>
                 <p className="productPrice">{product.price}€</p>
               </div>
-            </div>
+          </Link>
           );
         })}
       </section>

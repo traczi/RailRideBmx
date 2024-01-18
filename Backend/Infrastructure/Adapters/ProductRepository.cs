@@ -143,4 +143,27 @@ public class ProductRepository : IProductRepository
         };
         return productPropertiesDto;
     }
+
+    public async Task<List<Product>> GetRandomProductsAsync(int count)
+    {
+        return await _context.Products.OrderBy(r => Guid.NewGuid())
+            .Take(count)
+            .ToListAsync();
+    }
+    
+    public async Task<List<Product>> GetTopRatedProductsAsync(int count)
+    {
+        var topRatedProducts = await _context.Products
+            .Select(p => new
+            {
+                Product = p,
+                AverageRating = p.Comment != null && p.Comment.Any() 
+                    ? p.Comment.Average(c => c.Rating) 
+                    : 0
+            })
+            .Take(count)
+            .ToListAsync();
+        
+        return topRatedProducts.Select(p => p.Product).ToList();
+    }
 }

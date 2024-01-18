@@ -4,7 +4,8 @@ import { ErrorMessage, Field } from "formik";
 const FormValidation = (props) => {
   return (
     <div>
-      <p>{props.title}</p>
+      <p className={`${props.className ?? 'default'}-Text`}
+      >{props.title}</p>
       <Field
         type={props.type}
         name={props.name}

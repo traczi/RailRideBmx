@@ -66,9 +66,12 @@ public class ApplicationDbContext : Microsoft.EntityFrameworkCore.DbContext
                 .IsRequired();
             
             entity.HasOne(c => c.Product)
-                .WithMany()
+                .WithMany(p => p.Comment)
                 .HasForeignKey(c => c.ProductId)
                 .IsRequired();
+            
+            entity.HasIndex(c => new { c.UserId, c.ProductId })
+                .IsUnique();
         });
 
         modelBuilder.Entity<Like>(entity =>

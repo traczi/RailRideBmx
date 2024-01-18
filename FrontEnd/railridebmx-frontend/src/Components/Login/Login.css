@@ -70,3 +70,147 @@
   font-family: "Font/Heebo-Black.ttf", sans-serif;
   margin-right: 10%;
 }
+.loginPage{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+}
+.loginPage-Container{
+  margin-top: 50px;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  border: 1px solid #939393;
+  background: rgba(235, 235, 235, 0.60);
+  width: 25%;
+}
+.loginPage-userLogo-Container{
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  width: 200px;
+  background: #EBEBEB;
+  border-radius: 100%;
+}
+.loginPage-userLogo{
+  font-size: 8.5rem;
+  color: #828282;
+}
+.loginPage-userName-container{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  gap: 5px;
+  margin: 15px 0 ;
+  margin-top: 0;
+}
+.loginPage-userName-container p{
+  color: #000;
+  font-family: "Font/Heebo-Black.ttf", sans-serif;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-transform: capitalize;
+}
+.loginPage-user-modifyButton{
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.loginPage-userEmail-container{
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 5px;
+  margin: 15px 0 ;
+  color: #000;
+  font-family: "Font/Heebo-Black.ttf", sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.loginPage-logoutButoon{
+  padding: 0 15px;
+  margin-top: 5px;
+  height: 50px;
+  flex-shrink: 0;
+  border: 1px solid #E6E6E9;
+  background: #333533;
+  color: #FFF;
+  text-align: center;
+  font-family: "Font/Heebo-Black.ttf", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  cursor: pointer;
+  margin-bottom: 30px;
+}
+.loginPage-userEmail-input {
+  border: 1px solid #939393;
+  background: #d9d9d9;
+  width: 85%;
+  font-size: 20px;
+  padding-left: 10px;
+  pointer-events: none;
+}
+.loginPage-userEmail-input-noReadonly{
+  border: 1px solid #939393;
+  background: #d9d9d9;
+  font-size: 20px;
+  padding-left: 10px;
+  pointer-events: fill;
+}
+.loginPage-EmailField{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  gap: 5px;
+}
+.loginPage-EmailField-Modify{
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: start;
+  gap: 5px;
+}
+.loginPage-SaveAndModifyButton{
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
+  flex-flow: row nowrap;
+}
+.loginPage-SaveAndModifyButton button{
+  margin-top: 5px;
+  padding: 5px 5px;
+  flex-shrink: 0;
+  border: 1px solid #E6E6E9;
+  background: #333533;
+  color: #FFF;
+  text-align: center;
+  font-family: "Font/Heebo-Black.ttf", sans-serif;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  cursor: pointer;
+}
+.loginPage-ModifyPasswordButton{
+  margin-top: 5px;
+  height: 50px;
+  flex-shrink: 0;
+  border: 1px solid #E6E6E9;
+  background: #333533;
+  color: #FFF;
+  text-align: center;
+  font-family: "Font/Heebo-Black.ttf", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  cursor: pointer;
+  margin-bottom: 5px;
+  padding: 10px 10px;
+}

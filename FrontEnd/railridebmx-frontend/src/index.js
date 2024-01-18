@@ -14,6 +14,7 @@ import { ToastContainer } from 'react-toastify';
 import WishList from "./Components/Like/WishList";
 import PaymentForm from "./Components/Stripe/PaymentForm";
 import LoginPage from "./Components/Login/LoginPage";
+import HomePage from "./Components/HomePage/Homepage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -25,9 +26,10 @@ root.render(
       <Route path="/register" element={<Register />} />
       <Route path="/product/:id" element={<ProductDetails />} />
       <Route path="/productCreate" element={<CreateProduct />} />
-      <Route path="/" element={<AllProduct />} />
+      <Route path="/product" element={<AllProduct />} />
       <Route path="/productCart" element={<Cart />} />
       <Route path="/comment" element={<Comment />} />
+        <Route path="/" element={<HomePage />} />
         <Route path="/wishList" element={<WishList />} />
         <Route path="/stripe" element={<PaymentForm />} />
     </Routes>

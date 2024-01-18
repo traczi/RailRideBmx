@@ -19,5 +19,11 @@ public class Product
     public int Quantity { get; set; }
     public List<ProductCart> ProductCarts { get; set; }
     public ICollection<Like> Like { get; set; }
+    public ICollection<Comment> Comment { get; set; }
 
+    
+    public Product()
+    {
+        Comment = new List<Comment>();
+    }
 }

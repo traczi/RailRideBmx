@@ -3,6 +3,7 @@ using Application.IServices;
 using Application.Models.Product;
 using Application.Services;
 using Core.Domain.Entity;
+using Core.DTOs;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -118,5 +119,21 @@ public class ProductController : ApiController
     {
         var productProperties = await _productService.GetAllProductPropertiesAsync();
         return Ok(productProperties);
+    }
+
+    [HttpGet]
+    [Route("GetRandomProduct")]
+    public async Task<IActionResult> GetRandomProducts()
+    {
+        var ramdomProducts = await _productService.GetRandomProductAsync();
+        return Ok(ramdomProducts);
+    }
+    
+    [HttpGet]
+    [Route("top-rated")]
+    public async Task<ActionResult<List<ProductDto>>> GetTopRated()
+    {
+        var topRatedProducts = await _productService.GetTopRatedProductsAsync();
+        return Ok(topRatedProducts);
     }
 }

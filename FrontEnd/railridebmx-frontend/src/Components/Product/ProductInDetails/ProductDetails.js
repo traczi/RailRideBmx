@@ -70,7 +70,7 @@ function ProductDetails() {
       <NavBar />
       <section className="productDetailsSection">
         <div className="product">
-          <div className="productImage">
+          <div className="productDetail-productImage">
             <img
               alt="imageOfProduct"
               className="image"
@@ -107,7 +107,7 @@ function ProductDetails() {
           </div>
         </div>
       </section>
-      <hr />
+      <hr className="productDetails-hr"/>
       <div className="comment-contenair">
         <Comment productId={productsDetails.id} />
         <CommentList productId={productsDetails.id} />

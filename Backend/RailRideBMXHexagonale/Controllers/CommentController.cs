@@ -5,6 +5,7 @@ using Application.Models;
 using Application.Models.Comment;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace RailRideBMXHexagonale.Controllers;
 
@@ -22,13 +23,28 @@ public class CommentController : ApiController
     [Authorize]
     public async Task<IActionResult> AddComment([FromBody] CommentModel commentModel)
     {
-        var userIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-        if (!Guid.TryParse(userIdString, out Guid userId))
+        try
         {
-            return BadRequest("Invalid User ID");
+            var userIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (!Guid.TryParse(userIdString, out Guid userId))
+            {
+                return BadRequest("Invalid User ID");
+            }
+
+            await _commentService.AddCommentAsync(commentModel.ProductId, userId, commentModel.Rating,
+                commentModel.CommentText);
+            return Ok();
         }
-        await _commentService.AddCommentAsync(commentModel.ProductId, userId,  commentModel.Rating, commentModel.CommentText);
-        return Ok();
+        catch (InvalidOperationException ex)
+        {
+            return BadRequest(ex.Message);
+        }
+        catch (DbUpdateException e)
+        {
+            Console.WriteLine(e);
+            throw new DbUpdateException("L'utilisateur à déjà commenté ce produti");
+        }
+        
     }
 
     [HttpGet]

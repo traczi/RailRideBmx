@@ -11,7 +11,7 @@
   line-height: normal;
   display: flex;
   justify-content: center;
-  margin-top: 100px;
+  margin-top: 50px;
   margin-bottom: 15px;
 }
 .productSection {
@@ -21,19 +21,21 @@
 }
 .productList {
   margin: 2%;
+  text-decoration: none;
 }
-.productList .productImage {
+.productList .product-productImage {
   width: 270px;
   height: 270px;
   flex-shrink: 0;
-  background: #ebebeb;
   display: flex;
   justify-content: center;
   align-items: center;
+  border: #EBEBEB solid 1px;
 }
-.productList .productImage .image {
-  width: 260px;
-  height: 260px;
+.productList .product-productImage .image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
 }
 .productList .productProps .productTitle {
   color: #000;

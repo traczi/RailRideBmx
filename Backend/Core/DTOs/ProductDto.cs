@@ -8,4 +8,5 @@ public class ProductDto
     public float Price { get; set; }
     public int Quantity { get; set; }
     public int CartQuantity { get; set; }
+    public double AverageRating { get; set; }
 }

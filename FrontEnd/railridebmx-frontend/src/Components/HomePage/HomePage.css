@@ -1,0 +1,96 @@
+.HomePage {
+    max-width: 100vw;
+    overflow-x: hidden;
+}
+.HomePageBackgroundImage{
+    width: 100vw;
+}
+.NavHomePage{
+    width: 100vw;
+
+}
+.HomePage-Header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.HomePage-ButtonShop{
+    text-decoration: none;
+    color: #333533;
+    font-family: "Font/Heebo-Black.ttf", sans-serif;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    padding: 20px;
+    background-color: #F4F4F6;
+    border: #646464 solid 2px;
+    border-radius: 23px;
+    position: relative;
+    bottom: 150px;
+}
+.HomePage-Product-Container hr {
+    border: 0.1px solid #939393;
+    border-radius: 5%;
+    height: 0.1px;
+}
+.HomePage-Product-Content{
+    display: flex;
+    flex-direction: row;
+    gap:40px;
+    justify-content: center;
+}
+.HomePage-Product-image{
+    width: 270px;
+    height: 270px;
+    display: flex;
+    justify-content: center;
+    border: #EBEBEB solid 1px;
+
+}
+.HomePage-Product-Content-Image{
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.HomePage-Product-Container{
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 30px;
+    margin-bottom: 70px;
+}
+.homePage-title-container{
+    margin: 0 20vw;
+}
+.homePage-title-container h1{
+    color: #000;
+    font-size: 35px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    font-family: "Font/Heebo-Black.ttf", sans-serif;
+}
+.homepage-quantity{
+    display: flex;
+    flex-flow: row nowrap;
+}
+.hommepage-quantityText{
+    color: #000;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    font-family: "Font/Heebo-Black.ttf", sans-serif;
+    margin-right: 10px;
+}
+.HomePage-Product-Product{
+    color: #000;
+    font-family: "Font/Heebo-Black.ttf", sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-decoration: none;
+    cursor: pointer;
+}

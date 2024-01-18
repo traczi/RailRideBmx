@@ -1,4 +1,5 @@
 ﻿using Application.Models.Product;
+using Core.Domain.Entity;
 using Core.DTOs;
 
 namespace Application.IServices;
@@ -22,4 +23,6 @@ public interface IProductService
         float? wheelSize,
         bool showInStockOnly);
     Task<ProductPropertiesDto> GetAllProductPropertiesAsync();
+    Task<List<ProductDto>> GetRandomProductAsync();
+    Task<List<ProductDto>> GetTopRatedProductsAsync(int count = 4);
 }

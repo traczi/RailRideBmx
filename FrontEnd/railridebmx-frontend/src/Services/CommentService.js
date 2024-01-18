@@ -1,7 +1,6 @@
 const API_BASE_URL = "https://localhost:7139/RailRideBmx";
 
 export const postComments = async (commentData, token) => {
-  try {
     const response = await fetch(`${API_BASE_URL}/Comment/AddComment`, {
       method: "POST",
       headers: {
@@ -12,14 +11,11 @@ export const postComments = async (commentData, token) => {
     });
 
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+      const error = Error(`HTTP error! status: ${response.status}`);
+      error.status = response.status;
+      throw error;
     }
-
     return await response.ok;
-  } catch (error) {
-    console.error("Could not post comment:", error);
-    throw error;
-  }
 };
 
 export const reportComments = async (commentId, token) => {

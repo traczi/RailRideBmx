@@ -4,7 +4,7 @@ import {
   updateProductQuantity,
 } from "../../Services/CartService.js";
 import NavBar from "../NavBar/NavBar";
-import styles from "./Cart.module.css";
+import  "./Cart.css";
 
 function Cart() {
   const [productsCart, setProductsCart] = useState([]);
@@ -56,38 +56,38 @@ function Cart() {
   };
 
   return (
-    <div className={styles.cartpage}>
+    <div className="cartpage">
       <NavBar />
 
-      <div className={styles.cartCss}>
-        <h1 className={styles.title}>Cart</h1>
-        <hr />
-        <section className={styles.cartSection}>
-          <div className={styles.allProduct}>
+      <div className="cartCss">
+        <h1 className="cartpage-title">Cart</h1>
+        <hr className="cart-hr" />
+        <section className="cartSection">
+          <div className="allProduct">
             {productsCart.map((productCart, index) => (
-              <div key={index} className={styles.cart}>
-                <div className={styles.cartItem}>
-                  <div className={styles.imageProduct}>
+              <div key={index} className="cart">
+                <div className="cartItem">
+                  <div className="imageProduct">
                     <img
-                      className={styles.image}
+                      className="image"
                       src={productCart.image}
                       alt="ProductImage"
                     />
                   </div>
-                  <div className={styles.productDetail}>
-                    <div className={styles.productDetailText}>
-                      <h2 className={styles.titleProduct}>
+                  <div className="productDetail">
+                    <div className="productDetailText">
+                      <h2 className="titleProduct">
                         {productCart.title}
                       </h2>
-                      <p className={styles.quantityProduct}>
+                      <p className="quantityProduct">
                         Quantity : {productCart.cartQuantity}
                       </p>
-                      <p className={styles.productPrice}>
+                      <p className="productPrice">
                         {productCart.price} €
                       </p>
                     </div>
                     <select
-                      className={styles.selectQuantity}
+                      className="selectQuantity"
                       value={productCart.cartQuantity}
                       onChange={(e) => handleQuantityChange(e, productCart)}
                     >
@@ -97,7 +97,7 @@ function Cart() {
                         </option>
                       ))}
                     </select>
-                    <p className={styles.productTotalPrice}>
+                    <p className="productTotalPrice">
                       {productCart.price * productCart.cartQuantity} €
                     </p>
                   </div>
@@ -105,10 +105,10 @@ function Cart() {
               </div>
             ))}
           </div>
-          <div className={styles.cartSummary}>
-            <h2 className={styles.orderTitle}>ORDER TOTAL</h2>
-            <p className={styles.totalPrice}>{total.toFixed(2)} €</p>
-            <button className={styles.orderButton}><a href="/stripe">checkout</a></button>
+          <div className="cartSummary">
+            <h2 className="orderTitle">ORDER TOTAL</h2>
+            <p className="totalPrice">{total.toFixed(2)} €</p>
+            <button className="orderButton"><a href="/stripe">checkout</a></button>
           </div>
         </section>
       </div>

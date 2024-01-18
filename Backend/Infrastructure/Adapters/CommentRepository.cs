@@ -16,6 +16,14 @@ public class CommentRepository : ICommentRepository
     
     public async Task AddCommentAsync(Comment comment)
     {
+        var existingComment = await _context.Comments
+            .AnyAsync(c => c.UserId == comment.UserId && c.ProductId == comment.ProductId);
+
+        if (existingComment)
+        {
+            throw new InvalidOperationException("L'utilisateur a déjà commenté ce produit.");
+        }
+
         _context.Comments.Add(comment);
         await _context.SaveChangesAsync();
     }

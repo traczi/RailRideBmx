@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { postComments } from "../../Services/CommentService.js";
 import RatingStars from "./RatingStars";
+import {toast} from "react-toastify";
 
 function Comment({ productId }) {
   const [commentText, setCommentText] = useState("");
@@ -22,9 +23,15 @@ function Comment({ productId }) {
     try {
       const token = localStorage.getItem("jwtToken");
       const data = await postComments(commentData, token);
-      console.log("Commentaire créé:", data);
+      toast.success("Commentaire créé:", data);
+      // Handle success, e.g., clearing the form or giving success feedback
     } catch (error) {
-      console.log(error);
+      if (error.status === 400) {
+        toast.error("Vous avez déjà commenté ce produit.");
+      } else {
+        toast.error("Une erreur est survenue lors de l'envoi du commentaire.");
+      }
+      console.error("Could not post comment:", error);
     }
   };
 

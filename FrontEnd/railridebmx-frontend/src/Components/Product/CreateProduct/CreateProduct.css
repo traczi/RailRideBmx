@@ -1,0 +1,66 @@
+.creatProduct-container{
+    display: flex;
+    justify-content: center;
+}
+.creatProduct-content{
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    margin-top: 20px;
+    border: 1px solid #939393;
+    background: rgba(235, 235, 235, 0.60);
+    width: 40%;
+}
+.create-field-Text{
+    margin-top: 20px;
+    color: #000;
+    font-family: "Font/Heebo-Black.ttf", sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: capitalize;
+}
+.create-field{
+    border: 1px solid #939393;
+    background: #d9d9d9;
+    font-size: 20px;
+    padding-left: 10px;
+    pointer-events: fill;
+}
+.creatProduct-button-container{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+.creatProduct-button{
+    padding: 0 15px;
+    margin-top: 5px;
+    height: 50px;
+    flex-shrink: 0;
+    border: 1px solid #E6E6E9;
+    background: #333533;
+    color: #FFF;
+    text-align: center;
+    font-family: "Font/Heebo-Black.ttf", sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    cursor: pointer;
+    margin-bottom: 30px;
+}
+
+.creatProduct-title-container{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+.creatProduct-title{
+    color: #000;
+    font-size: 35px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    font-family: "Font/Heebo-Black.ttf", sans-serif;
+}

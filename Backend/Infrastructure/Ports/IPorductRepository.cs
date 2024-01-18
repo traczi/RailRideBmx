@@ -23,5 +23,7 @@ public interface IProductRepository
         bool showInStockOnly);
 
     Task<ProductPropertiesDto> GetAllProductPropertiesAsync();
+    Task<List<Product>> GetRandomProductsAsync(int count);
+    Task<List<Product>> GetTopRatedProductsAsync(int count);
 
 }

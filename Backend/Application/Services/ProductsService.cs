@@ -221,6 +221,19 @@ public class ProductsService : IProductService
         return await _productRepository.GetAllProductPropertiesAsync();
     }
 
+    public async Task<List<ProductDto>> GetRandomProductAsync()
+    {
+        var products = await _productRepository.GetRandomProductsAsync(4);
+        return products.Select(p => new ProductDto
+        {
+            Id = p.Id,
+            Title = p.Title,
+            Quantity = p.Quantity,
+            Image = _imageService.ImageUrl(p.Image),
+            Price = p.Price
+        }).ToList();
+    }
+
     public async Task<ProductResponseModel> DeleteProduct(Guid guid)
     {
         var product = await _productRepository.GetProductByIdAsync(guid);
@@ -232,5 +245,19 @@ public class ProductsService : IProductService
             Price = productDelete.Price
         };
         return productModel;
+    }
+    
+    public async Task<List<ProductDto>> GetTopRatedProductsAsync(int count = 4)
+    {
+        var products = await _productRepository.GetTopRatedProductsAsync(count);
+        return products.Select(p => new ProductDto
+        {
+            Id = p.Id,
+            Title = p.Title,
+            Quantity = p.Quantity,
+            Image = _imageService.ImageUrl(p.Image),
+            Price = p.Price,
+            AverageRating = p.Comment.Any() ? p.Comment.Average(c => c.Rating) : 0
+        }).ToList();
     }
 }

@@ -54,17 +54,19 @@ const CheckoutForm = ({ clientSecret, cartId }) => {
             console.log(result.error.message);
         } else {
             if (result.paymentIntent.status === 'succeeded') {
-                console.log('Le paiement a été effectué avec succès!');
+                const addressElement = elements.getElement(AddressElement);
+
+                const {complete, value} = await addressElement.getValue();
+                if (complete) {
+
+                    console.log(value);
+                    await sendAddressToServer(value);
+                }
             }
         }
-        const addressElement = elements.getElement(AddressElement);
 
-        const {complete, value} = await addressElement.getValue();
 
-        if (complete) {
-            console.log(value);
-            await sendAddressToServer(value);
-        }
+
     };
 
     return (
