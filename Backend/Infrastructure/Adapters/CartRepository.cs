@@ -190,7 +190,21 @@ public class CartRepository : ICartRepository
     
     public async Task<Guid> GetCartIdBySessionIdAsync(string session)
     {
-        var cart = await _context.Carts.FirstOrDefaultAsync(c => c.SessionId.ToString() == session);
+        var cart = await _context.Carts.FirstOrDefaultAsync(c => c.SessionId == session);
         return cart?.Id ?? Guid.Empty;
     }
+    
+    public async Task RemoveProductFromCartAsync(Guid cartId, Guid productId)
+    {
+        var productInCart = await _context.ProductCarts
+            .FirstOrDefaultAsync(cp => cp.CartId == cartId && cp.ProductId == productId);
+
+        if (productInCart != null)
+        {
+            _context.ProductCarts.Remove(productInCart);
+            await _context.SaveChangesAsync();
+        }
+    }
+    
+
 }

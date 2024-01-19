@@ -49,7 +49,7 @@ public class ProductController : ApiController
     }
     
     [HttpPut]
-    [Route("{ProductId}")]
+    [Route("UpdateProduct")]
     public async Task<IActionResult> UpdateProduct(Guid guid, ProductResponseModel productResponseModel)
     {
         var updateProduct = await _productService.UpdateProduct(guid, productResponseModel);
@@ -57,7 +57,7 @@ public class ProductController : ApiController
     }
     
     [HttpDelete]
-    [Route("{ProductId}")]
+    [Route("DeleteProduct")]
     public async Task<IActionResult> DeleteProduct(Guid guid)
     {
         var deleteProduct = await _productService.DeleteProduct(guid);

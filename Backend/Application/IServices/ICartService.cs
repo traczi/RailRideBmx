@@ -17,5 +17,5 @@ public interface ICartService
     Task<bool> UpdateCartStatus(Guid cartId);
     Task<Guid> GetCartIdBySessionIdAsync(string sessionId);
     Task<Guid> GetCartIdByUserIdAsync(string userId);
-
+    Task RemoveProductFromCartAsync(Guid cartId, Guid productId);
 }

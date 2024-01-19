@@ -188,4 +188,9 @@ public class CartService : ICartService
     {
         return await _cartRepository.GetCartIdBySessionIdAsync(sessionId);
     }
+    
+    public async Task RemoveProductFromCartAsync(Guid cartId, Guid productId)
+    {
+        await _cartRepository.RemoveProductFromCartAsync(cartId, productId);
+    }
 }

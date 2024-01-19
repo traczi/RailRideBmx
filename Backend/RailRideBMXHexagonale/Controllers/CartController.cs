@@ -103,4 +103,39 @@ public class CartController : ApiController
             return Ok(carts);
         }
     }
+    
+    [HttpDelete]
+    [Route("DeleteProduct")]
+    public async Task<IActionResult> RemoveProductFromCart(Guid cartId, Guid productId)
+    {
+        try
+        {
+            await _cartService.RemoveProductFromCartAsync(cartId, productId);
+            return Ok();
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
+    }
+
+    [HttpGet]
+    [Route("CartId")]
+    public async Task<IActionResult> GetCartId()
+    {
+        var cartId = new Guid();
+        var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        Console.WriteLine("=============" +userId);
+        if (string.IsNullOrEmpty(userId))
+        {
+            HttpContext.Request.Cookies.TryGetValue(SessionName, out var sessionId);
+            cartId = await _cartService.GetCartIdBySessionIdAsync(sessionId);
+        }
+        else
+        {
+            cartId = await _cartService.GetCartIdByUserIdAsync(userId);
+        }
+        
+        return Ok(cartId);
+    }
 }

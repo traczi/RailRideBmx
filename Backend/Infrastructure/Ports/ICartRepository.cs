@@ -18,5 +18,6 @@ public interface ICartRepository
      Task<Guid?> GetUnpaidCartIdByUserIdOrSessionIdAsync(string userId);
      Task<Guid> GetCartIdBySessionIdAsync(string session);
      Task<Guid> GetCartIdByUserIdAsync(string userId);
+     Task RemoveProductFromCartAsync(Guid cartId, Guid productId);
 
 }
