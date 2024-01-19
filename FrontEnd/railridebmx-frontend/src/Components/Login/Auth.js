@@ -20,4 +20,13 @@ const getUserIdFromJWT = () => {
     return null;
 };
 
+export const getUserRoleFromJWT = () => {
+    const token = localStorage.getItem('jwtToken');
+    if (token) {
+        const decodedToken = jwtDecode(token);
+        return decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
+    }
+    return null;
+};
+
 export { isAuthenticated, logout, getUserIdFromJWT };

@@ -62,11 +62,15 @@ function HomePage() {
                 <div className="HomePage-Product-Content">
                 {randomProduct.length > 0 ? (
                     randomProduct.map(randomProduct => (
-                        <Link to={`/product/${randomProduct.id}`} key={randomProduct.id} className="HomePage-Product-Product">
+                        <Link to={`/product/${randomProduct.id}`} key={randomProduct.id}
+                              className="HomePage-Product-Product">
                             <div className="HomePage-Product-image">
-                                <img className="HomePage-Product-Content-Image" src={randomProduct.image} alt={randomProduct.title}/>
+                                <img className="HomePage-Product-Content-Image" src={randomProduct.image}
+                                     alt={randomProduct.title}/>
                             </div>
                             <h2>{randomProduct.title}</h2>
+                            <p className="hommepage-quantityText">{randomProduct.price} €</p>
+
                             <div className="homepage-quantity">
                                 <p className="hommepage-quantityText">{`${getStatusText(
                                     randomProduct.quantity
@@ -93,6 +97,7 @@ function HomePage() {
                                 <img className="HomePage-Product-Content-Image" src={product.image} alt={product.title}/>
                             </div >
                             <h2>{product.title}</h2>
+                            <p className="hommepage-quantityText">{product.price} €</p>
                             <div className="homepage-quantity">
                                 <p className="hommepage-quantityText">{`${getStatusText(
                                     product.quantity

@@ -1,0 +1,47 @@
+.dashboard {
+    margin: 0 15%;
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.dashboard-main {
+    width: 50%;
+}
+.dashboard-main h1{
+    color: #000;
+    font-family: "Font/Heebo-Black.ttf", sans-serif;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.dashboard-sidebar {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin-left: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.dashboard-sidebar button {
+    width: 200px;
+    margin-bottom: 10px;
+    padding: 0 15px;
+    margin-top: 5px;
+    height: 50px;
+    flex-shrink: 0;
+    border: 1px solid #E6E6E9;
+    background: #333533;
+    color: #FFF;
+    text-align: center;
+    font-family: "Font/Heebo-Black.ttf", sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    cursor: pointer;
+}
+

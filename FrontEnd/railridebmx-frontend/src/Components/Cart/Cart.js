@@ -9,6 +9,7 @@ import  "./Cart.css";
 function Cart() {
   const [productsCart, setProductsCart] = useState([]);
   const [total, setTotal] = useState(0);
+  const [cartId, setCartId] = useState('');
 
   useEffect(() => {
     const initFetch = async () => {
@@ -23,8 +24,48 @@ function Cart() {
         );
       }
     };
+    const fetchCartId = async () => {
+      try {
+        const response = await fetch('https://localhost:7139/RailRideBmx/Cart/CartId');
+        const data = await response.json();
+        setCartId(data);
+      } catch (error) {
+        console.error("Erreur lors de la récupération du cartId:", error);
+      }
+    };
+
+    fetchCartId();
     initFetch();
   }, []);
+
+  const deleteProductFromCart = async (productId) => {
+    try {
+      const response = await fetch(
+          `https://localhost:7139/RailRideBmx/Cart/DeleteProduct?cartId=${cartId}&productId=${productId}`,
+          {
+            method: 'DELETE',
+            headers: {
+              'Content-Type': 'application/json',
+              // Supposons que vous passiez le jeton JWT dans les en-têtes de la requête
+              'Authorization': `Bearer ${localStorage.getItem("jwtToken")}`,
+            },
+          }
+      );
+
+      if (!response.ok) {
+        throw new Error('Error deleting product from cart');
+      }
+
+      // Filtrer le produit supprimé de l'état local pour mettre à jour l'UI
+      setProductsCart(currentProducts =>
+          currentProducts.filter(p => p.id !== productId)
+      );
+
+      console.log("Product removed from cart:", productId);
+    } catch (error) {
+      console.error("Error during cart product deletion:", error);
+    }
+  };
 
   const handleQuantityChange = async (e, product) => {
     const newQuantity = parseInt(e.target.value);
@@ -87,16 +128,22 @@ function Cart() {
                       </p>
                     </div>
                     <select
-                      className="selectQuantity"
-                      value={productCart.cartQuantity}
-                      onChange={(e) => handleQuantityChange(e, productCart)}
+                        className="selectQuantity"
+                        value={productCart.cartQuantity}
+                        onChange={(e) => handleQuantityChange(e, productCart)}
                     >
                       {[...Array(productCart.quantity).keys()].map((num) => (
-                        <option key={num} value={num + 1}>
-                          {num + 1}
-                        </option>
+                          <option key={num} value={num + 1}>
+                            {num + 1}
+                          </option>
                       ))}
                     </select>
+                    <button
+                        className="deleteButton"
+                        onClick={() => deleteProductFromCart(productCart.id)}
+                    >
+                      Supprimer
+                    </button>
                     <p className="productTotalPrice">
                       {productCart.price * productCart.cartQuantity} €
                     </p>

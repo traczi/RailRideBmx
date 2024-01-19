@@ -97,6 +97,9 @@
   margin-top: 15px;
   cursor: pointer;
 }
+.category-navbar a {
+  text-decoration: none;
+}
 .menu-category .list-hidden {
   height: 0;
   transition: height 0.3s linear;

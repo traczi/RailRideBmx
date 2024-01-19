@@ -15,6 +15,10 @@ import WishList from "./Components/Like/WishList";
 import PaymentForm from "./Components/Stripe/PaymentForm";
 import LoginPage from "./Components/Login/LoginPage";
 import HomePage from "./Components/HomePage/Homepage";
+import DashBoard from "./Components/DashBoard/DashBoard";
+import UserList from "./Components/DashBoard/UserList";
+import ProductList from "./Components/DashBoard/ProductList";
+import UpdateProduct from "./Components/DashBoard/UpdateProduct";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -32,6 +36,10 @@ root.render(
         <Route path="/" element={<HomePage />} />
         <Route path="/wishList" element={<WishList />} />
         <Route path="/stripe" element={<PaymentForm />} />
+        <Route path="/DashBoard" element={<DashBoard />}/>
+      <Route path="/UserList" element={<UserList />}/>
+      <Route path="/productList" element={<ProductList />}/>
+      <Route path="/modifyProduct/:productId" element={<UpdateProduct />}/>
     </Routes>
   </BrowserRouter>
 );

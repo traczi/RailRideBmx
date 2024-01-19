@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'; // Assurez-vous que vous utilisez react
 import { getWishList } from '../../Services/LikeService';
 import { toast, ToastContainer } from 'react-toastify';
 import NavBar from "../NavBar/NavBar";
+import "./WishList.css"
 
 function WishList() {
     const [likedProducts, setLikedProducts] = useState([]);
@@ -30,29 +31,38 @@ function WishList() {
     return (
         <div>
             <NavBar/>
-            <h2>Produits Aimés</h2>
-            {isLoggedIn ? (
-                likedProducts.length > 0 ? (
-                    <ul>
-                        {likedProducts.map(product => (
-                            <div key={product.id}>
-                                <div><img src={product.image} alt={product.title}/></div>
-                                <div>
-                                    <h1>{product.title}</h1>
-                                    <p>{product.price}</p></div>
-
-                            </div>
-                        ))}
-                    </ul>
-                ) : (
-                    <p>Vous n'avez pas encore aimé de produits.</p>
-                )
-            ) : (
-                <div>
-                    <p>Pour accéder à la wishlist, veuillez <Link to="/login">vous connecter</Link> ou <Link to="/register">créer un compte</Link>.</p>
-
+            <div  className="wishlist">
+                <div className="wishlist-title">
+                    <h2>Produits Aimés</h2>
+                    <hr/>
                 </div>
-            )}
+                <div>
+                {isLoggedIn ? (
+                    likedProducts.length > 0 ? (
+                        <ul className="wishlist-ul">
+                            {likedProducts.map(product => (
+                                <div key={product.id}>
+                                    <div className="wishlist-image-container">
+                                        <img className="wishlist-image" src={product.image} alt={product.title}/>
+                                    </div>
+                                    <div>
+                                        <h1 className="wishlist-h1">{product.title}</h1>
+                                        <p className="wishlist-p">{product.price} €</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </ul>
+                    ) : (
+                        <p>Vous n'avez pas encore aimé de produits.</p>
+                    )
+                ) : (
+                    <div>
+                        <p>Pour accéder à la wishlist, veuillez <Link to="/login">vous connecter</Link> ou <Link to="/register">créer un compte</Link>.</p>
+
+                    </div>
+                )}
+                </div>
+            </div>
         </div>
     );
 }

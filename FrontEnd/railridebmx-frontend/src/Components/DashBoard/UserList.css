@@ -1,0 +1,59 @@
+.UserList{
+    width: 50%;
+    margin-top: 50px;
+    display: flex;
+    flex-flow: column nowrap;
+}
+.UserList h1{
+    color: #000;
+    font-family: "Font/Heebo-Black.ttf", sans-serif;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+
+}
+.UserList-container{
+    display: flex;
+    justify-content: center;
+}
+.user-list-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.user-list-table th,
+.user-list-table td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.user-list-table tr.even {
+    background-color: #f2f2f2;
+    font-family: "Font/Heebo-Black.ttf", sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.user-list-table tr.odd {
+    background-color: #fff;
+    font-family: "Font/Heebo-Black.ttf", sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.user-list-table th {
+    background-color: #000000;
+    color: white;
+    font-family: "Font/Heebo-Black.ttf", sans-serif;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+
+}

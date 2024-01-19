@@ -36,17 +36,18 @@ function Comment({ productId }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Comment Text:
-        <textarea
-          value={commentText}
-          onChange={(e) => setCommentText(e.target.value)}
-          required
-        />
-      </label>
+    <form className="comment-form" onSubmit={handleSubmit}>
+      <div className="comment-submit">
+        <label className="comment-title">Commentaire : </label>
+          <textarea
+              className="comment-textarea"
+            value={commentText}
+            onChange={(e) => setCommentText(e.target.value)}
+            required
+          />
+      </div>
       <RatingStars onRatingChange={handleRatingChange}/>
-      <button type="submit">Submit Comment</button>
+      <button className="comment-submitbutton" type="submit">Submit Comment</button>
     </form>
   );
 }

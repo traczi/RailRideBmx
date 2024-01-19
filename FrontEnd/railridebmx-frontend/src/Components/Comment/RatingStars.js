@@ -24,9 +24,10 @@ function RatingStars({ onRatingChange }) {
     };
 
     return (
-        <div>
+        <div >
             {[1, 2, 3, 4, 5].map((index) => (
                 <FontAwesomeIcon
+                    className="rating-stars"
                     key={index}
                     icon={index <= (hoverRating || rating) ? solidStar : regularStar}
                     onMouseOver={() => handleMouseOver(index)}

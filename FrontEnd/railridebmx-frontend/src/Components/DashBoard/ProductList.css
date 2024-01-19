@@ -1,0 +1,84 @@
+.ProductList{
+    width: 50%;
+    margin-top: 50px;
+    display: flex;
+    flex-flow: column nowrap;
+}
+.ProductList h1{
+    color: #000;
+    font-family: "Font/Heebo-Black.ttf", sans-serif;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+
+}
+.ProductList-container{
+    display: flex;
+    justify-content: center;
+}
+
+.product-list-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.product-list-table th,
+.product-list-table td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    text-align: left;
+    background-color: #fff;
+    font-family: "Font/Heebo-Black.ttf", sans-serif;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.product-list-table thead th {
+    background-color: #000000;
+    color: white;
+    font-family: "Font/Heebo-Black.ttf", sans-serif;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+
+}
+
+/* Lignes paires en gris clair, lignes impaires en blanc */
+.product-list-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.product-list-table tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+.product-list-table tr:hover {
+    background-color: #ddd; /* Coloration au survol */
+}
+
+.product-list-table td {
+    position: relative; /* Pour le positionnement des boutons si nécessaire */
+}
+
+.product-list-table button {
+    margin-right: 5px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #f44336;
+    color: white;
+}
+
+.product-list-table button:first-of-type {
+    background-color: #008CBA; /* Couleur différente pour le bouton 'Modifier' */
+}
+
+.product-list-table button:hover {
+    opacity: 0.8; /* Effet au survol pour les boutons */
+}

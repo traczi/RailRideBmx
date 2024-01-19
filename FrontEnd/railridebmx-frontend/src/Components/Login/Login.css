@@ -149,6 +149,26 @@
   cursor: pointer;
   margin-bottom: 30px;
 }
+.loginPage-DashboardButoon{
+  padding: 0 15px;
+  margin-top: 5px;
+  height: 50px;
+  flex-shrink: 0;
+  border: 1px solid #E6E6E9;
+  background: #333533;
+  color: #FFF;
+  text-align: center;
+  font-family: "Font/Heebo-Black.ttf", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  cursor: pointer;
+}
+.loginPage-DashboardButoon a{
+  text-decoration: none;
+  color: white;
+}
 .loginPage-userEmail-input {
   border: 1px solid #939393;
   background: #d9d9d9;

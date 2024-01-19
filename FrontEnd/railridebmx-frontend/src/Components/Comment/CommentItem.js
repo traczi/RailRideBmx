@@ -80,7 +80,7 @@ function CommentItem({ comment, currentUserId, onCommentChange }) {
             )}
             {isAuthor && (
                 <div className="comment-options">
-                    <button onClick={toggleOptions} className="options-toggle">
+                    <button  onClick={toggleOptions} className="options-toggle">
                         <FontAwesomeIcon icon={faEllipsisV} />
                     </button>
                     {showOptions && (

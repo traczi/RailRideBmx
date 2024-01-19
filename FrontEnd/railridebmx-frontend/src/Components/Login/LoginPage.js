@@ -6,6 +6,9 @@ import {getUser, modifyEmail, modifyName, modifyPassword} from "../../Services/U
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faUser} from "@fortawesome/free-regular-svg-icons";
 import {faPencil} from "@fortawesome/free-solid-svg-icons";
+import {getUserRoleFromJWT} from "../Login/Auth";
+
+
 
 function LoginPage() {
     const [user, setUser] = useState(null);
@@ -17,6 +20,8 @@ function LoginPage() {
     const [oldPassword, setOldPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
     const [confirmNewPassword, setConfirmNewPassword] = useState('');
+    const [role, setrole] = useState('');
+
 
     useEffect(() => {
         if (isAuthenticated()) {
@@ -29,8 +34,9 @@ function LoginPage() {
                 }
             });
         }
+        const roleDecode = getUserRoleFromJWT();
+        setrole(roleDecode);
     }, []);
-
 
     const handleNameChange = (e) => {
         setNewName({ ...newName, [e.target.name]: e.target.value });
@@ -68,6 +74,7 @@ function LoginPage() {
             alert("Erreur lors de la mise à jour de l'email.");
         }
     };
+
 
     const submitPasswordChange = async () => {
         if (newPassword !== confirmNewPassword) {
@@ -197,7 +204,9 @@ function LoginPage() {
                                 </>
                             )}
 
-                        </div>
+                        </div>{role === 'Admin' && (
+                        <button className="loginPage-DashboardButoon"><a href="/dashBoard"> dashboard</a></button>
+                    )}
                         <button className="loginPage-logoutButoon" onClick={logout}>Se Déconnecter</button>
                     </div>
                 </div>

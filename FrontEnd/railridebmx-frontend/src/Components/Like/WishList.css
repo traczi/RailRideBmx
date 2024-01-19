@@ -1,0 +1,57 @@
+.wishlist{
+    display: flex;
+    flex-flow: column nowrap;
+}
+.wishlist-image-container {
+    width: 270px;
+    height: 270px;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: #EBEBEB solid 1px;
+}
+.wishlist-image{
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+.wishlist-ul{
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+.wishlist-title{
+    display: flex;
+    flex-flow: column;
+    margin: 0 20vh;
+    margin-bottom: 30px;
+}
+.wishlist-title h2{
+    display: flex;
+    padding-top: 20px;
+    padding-bottom: 21px;
+    font-family: "Font/Heebo-Black.ttf", sans-serif;
+    color: #000;
+    font-size: 1.6rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    border-bottom: 1px solid #aaa;
+}
+.wishlist-h2{
+    color: #000;
+    font-family: "Font/Heebo-Black.ttf", sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+.wishlist-p{
+    color: #000;
+    font-family: "Font/Heebo-Black.ttf", sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}

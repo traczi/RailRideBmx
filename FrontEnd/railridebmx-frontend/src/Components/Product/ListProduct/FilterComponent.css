@@ -1,0 +1,43 @@
+.filterComponent{
+    display: flex;
+    flex-flow: column nowrap;
+}
+.filterSection{
+    display: flex;
+    flex-flow: column nowrap;
+}
+.filter-title{
+    margin-top: 10px;
+    margin-bottom: 5px;
+    color: #000;
+    font-family: "Font/Heebo-Black.ttf", sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+.filter-name{
+    color: rgba(107, 103, 103, 0.63);
+    font-family: "Font/Heebo-Black.ttf", sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+.filter-Container-input{
+    display: flex;
+    gap: 10px;
+    margin: 0 20px;
+    justify-content: space-between;
+    align-items: center;
+}
+.search-input{
+    border: 1px solid #939393;
+    background: #f4f4f6;
+    width: 150px;
+    height: 30px;
+    flex-shrink: 0;
+    font-size: 1.2rem;
+    padding-left: 5px;
+    margin-bottom: 20px;
+}

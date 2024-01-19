@@ -7,6 +7,7 @@ import { faUser } from "@fortawesome/free-regular-svg-icons";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { faX } from "@fortawesome/free-solid-svg-icons";
 import React, { useState } from "react";
+import {Link} from "react-router-dom";
 
 const NavBar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -199,7 +200,7 @@ const NavBar = () => {
             </div>
             <div className="lower-navbar-computer">
               <h3 onClick={() => toggleCategory(2)} className="category-navbar">
-                Tous les produits
+                <a href="/product">Tous les produits</a>
               </h3>
               <ul
                 className={

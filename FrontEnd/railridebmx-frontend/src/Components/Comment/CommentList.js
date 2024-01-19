@@ -24,19 +24,20 @@ function CommentList({ productId }) {
 
   console.log(comments.userId);
   return (
-    <div>
-      <h3>Comments</h3>
+    <div className="commentList-comment">
+      <h3 className="commentList-title">Comments</h3>
       {comments.length > 0 ? (
         <ul>
           {comments.map((comment, index) => (
-            <li key={index}>
-                  <CommentItem
-                      key={comment.id}
-                      comment={comment}
-                      currentUserId={currentUserId}
-                      onCommentChange={fetchAndSetComments}
-                  />
-            </li>
+
+              <div key={index}>
+                <CommentItem
+                    key={comment.id}
+                    comment={comment}
+                    currentUserId={currentUserId}
+                    onCommentChange={fetchAndSetComments}
+                />
+              </div>
           ))}
         </ul>
       ) : (
