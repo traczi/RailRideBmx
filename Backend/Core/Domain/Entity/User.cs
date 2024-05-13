@@ -14,4 +14,10 @@ public class User
     public ICollection<ConfigurationBMX> Configurations { get; set; }
     public string? ResetPassWordToken { get; set; }
     public DateTime? ResetPasswordTokenExpiration  { get; set; }
+
+    public User()
+    {
+        Like = new List<Like>();
+        Configurations = new List<ConfigurationBMX>();
+    }
 }

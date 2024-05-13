@@ -1,0 +1,22 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=8f70b5b3_002D8e4d_002D4c1d_002D86de_002D128220f89a9a/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="ProductTests #3" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::81E30707-F9B6-4F25-8CD2-F78696F9FC37::net6.0::TestUnitaire.RailRideBMX.Tests.Core.Domain.Entity.ProductTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::81E30707-F9B6-4F25-8CD2-F78696F9FC37::net6.0::Tests.Core.Domain.Entity.BrandTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::81E30707-F9B6-4F25-8CD2-F78696F9FC37::net6.0::TestUnitaire.RailRideBMX.Tests.Core.Domain.Entity.ColorTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::81E30707-F9B6-4F25-8CD2-F78696F9FC37::net6.0::TestUnitaire.RailRideBMX.Tests.Core.Domain.Entity.UserTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::81E30707-F9B6-4F25-8CD2-F78696F9FC37::net6.0::TestUnitaire.RailRideBMX.Tests.Application.Services.ProductsServiceTests&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=945578f6_002D6383_002D4afe_002D80f4_002D660cb0034505/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="ProductsServiceTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::81E30707-F9B6-4F25-8CD2-F78696F9FC37::net6.0::TestUnitaire.RailRideBMX.Tests.Application.Services.ProductsServiceTests&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=b7851b0f_002D2d8a_002D452a_002Da988_002D881986a026f6/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="ProductsServiceTests #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::81E30707-F9B6-4F25-8CD2-F78696F9FC37::net6.0::TestUnitaire.RailRideBMX.Tests.Application.Services.ProductsServiceTests&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	
+	</wpf:ResourceDictionary>

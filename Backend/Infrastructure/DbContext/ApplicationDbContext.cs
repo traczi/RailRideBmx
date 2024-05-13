@@ -18,18 +18,55 @@ public class ApplicationDbContext : Microsoft.EntityFrameworkCore.DbContext
     public DbSet<Like> Likes { get; set; } = null!;
     public DbSet<ConfigurationBMX> ConfigurationsBMX { get; set; } = null!;
     public DbSet<Address> Addresses { get; set; } = null!;
+    public DbSet<Color> Colors { get; set; } = null!;
+    public DbSet<Category> Categories { get; set; } = null!;
+    public DbSet<Brand> Brands { get; set; } = null;
 
 
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Product>().HasKey(p => p.Id);
         
         modelBuilder.Entity<User>().HasKey(u => u.Id);
 
         modelBuilder.Entity<User>()
             .HasIndex(u => u.Email)
             .IsUnique();
+
+        modelBuilder.Entity<Product>(entity =>
+        {
+            entity.HasKey(p => p.Id);
+
+            entity.HasOne(p => p.Category)
+                .WithMany()
+                .HasForeignKey(p => p.CategoryId)
+                .IsRequired();
+
+            entity.HasOne(p => p.Color)
+                .WithMany()
+                .HasForeignKey(p => p.ColorId)
+                .IsRequired();
+
+            entity.HasOne(p => p.Brand)
+                .WithMany()
+                .HasForeignKey(p => p.BrandId)
+                .IsRequired();
+        });
+        
+        modelBuilder.Entity<Color>(entity =>
+        {
+            entity.HasKey(c => c.ColorId);
+        });
+        
+        modelBuilder.Entity<Category>(entity =>
+        {
+            entity.HasKey(c => c.CategoryId);
+        });
+        
+        modelBuilder.Entity<Brand>(entity =>
+        {
+            entity.HasKey(b => b.BrandId);
+        });
         
         modelBuilder.Entity<Cart>(entity =>
         {

@@ -22,7 +22,7 @@ public class ProductRepository : IProductRepository
 
     public async Task<List<Product>> GetProductByCategorieAsync(string category)
     {
-        var productByCategory = _context.Products.Where(x => x.Category == category).ToListAsync();
+        var productByCategory = _context.Products.Where(x => x.Category.CategoryName == category).ToListAsync();
         return await productByCategory;
     }
     public async Task<Product> GetProductByIdAsync(Guid productId)
@@ -77,12 +77,12 @@ public class ProductRepository : IProductRepository
         
         if (!string.IsNullOrEmpty(color))
         {
-            query = query.Where(p => p.Color == color);
+            query = query.Where(p => p.Color.ColorName == color);
         }
         
         if (!string.IsNullOrEmpty(brand))
         {
-            query = query.Where(p => p.Brand == brand);
+            query = query.Where(p => p.Brand.BrandName == brand);
         }
         
         if (frameSize.HasValue)
@@ -116,13 +116,13 @@ public class ProductRepository : IProductRepository
         var productPropertiesDto = new ProductPropertiesDto
         {
             Color = await _context.Products
-                .Where(p => !string.IsNullOrWhiteSpace(p.Color))
-                .Select(p => p.Color)
+                .Where(p => !string.IsNullOrWhiteSpace(p.Color.ColorName))
+                .Select(p => p.Color.ColorName)
                 .Distinct()
                 .ToListAsync(),
             Brand = await _context.Products
-                .Where(p => !string.IsNullOrWhiteSpace(p.Brand))
-                .Select(p => p.Brand)
+                .Where(p => !string.IsNullOrWhiteSpace(p.Brand.BrandName))
+                .Select(p => p.Brand.BrandName)
                 .Distinct()
                 .ToListAsync(),
             FrameSize = await _context.Products

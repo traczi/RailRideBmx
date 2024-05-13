@@ -10,11 +10,18 @@ public class ProductsService : IProductService
 {
     private readonly IProductRepository _productRepository;
     private readonly IImageService _imageService;
+    private readonly IColorRepository _colorRepository;
+    private readonly IBrandRepository _brandRepository;
+    private readonly ICategoryRepository _categoryRepository;
 
-    public ProductsService(IProductRepository productRepository,IImageService imageService )
+    
+    public ProductsService(IProductRepository productRepository,IImageService imageService, IColorRepository colorRepository, IBrandRepository brandRepository, ICategoryRepository categoryRepository )
     {
         _productRepository = productRepository;
         _imageService = imageService;
+        _colorRepository = colorRepository;
+        _brandRepository = brandRepository;
+        _categoryRepository = categoryRepository;
     }
 
     public async Task<IEnumerable<ProductResponseModel>> GetAllProductAsync()
@@ -52,15 +59,15 @@ public class ProductsService : IProductService
 
             var productResponse = new ProductResponseModel()
             {
-                Brand = product.Brand,
+                Brand = product.Brand.BrandName,
                 Price = product.Price,
-                Color = product.Color,
+                Color = product.Color.ColorName,
                 FrameSize = product.FrameSize,
                 Description = product.Description,
                 Image = url,
                 Title = product.Title,
                 Quantity = product.Quantity,
-                Category = product.Category,
+                Category = product.Category.CategoryName,
                 ConfigCategory = product.ConfigCategory
             };
             
@@ -77,9 +84,9 @@ public class ProductsService : IProductService
         var productById = new ProductResponseModel()
         {
             Id = product.Id,
-            Brand = product.Brand,
+            Brand = product.Brand.BrandName,
             Price = product.Price,
-            Color = product.Color, 
+            Color = product.Color.ColorName, 
             FrameSize = product.FrameSize,
             HandlebarSize = product.HandlebarSize,
             WheelSize = product.WheelSize,
@@ -87,7 +94,7 @@ public class ProductsService : IProductService
             Image = url,
             Title = product.Title,
             Quantity = product.Quantity,
-            Category = product.Category,
+            Category = product.Category.CategoryName,
             SubCategory = product.SubCategory,
             ConfigCategory = product.ConfigCategory,
             Geometry = product.Geometry
@@ -99,11 +106,33 @@ public class ProductsService : IProductService
     public async Task<ProductResponseModel> CreateProductAsync(ProductResponseModel productResponseModel, string url)
     {
         var idImage = _imageService.UploadImage(url);
+
+        var color = await _colorRepository.GetColorNameAsync(productResponseModel.Color);
+        if (color == null)
+        {
+            color = new Color { ColorName = productResponseModel.Color };
+            await _colorRepository.CreateColorAsync(color);
+        }
+        
+        var brand = await _brandRepository.GetBrandNameAsync(productResponseModel.Brand);
+        if (brand == null)
+        {
+            brand = new Brand { BrandName = productResponseModel.Brand };
+            await _brandRepository.CreateBrandAsync(brand);
+        }
+        
+        var category = await _categoryRepository.GetCategoryNameAsync(productResponseModel.Category);
+        if (category == null)
+        {
+            category = new Category { CategoryName = productResponseModel.Category };
+            await _categoryRepository.CreateCategoryAsync(category);
+        }
+        
         var product = new Product()
         {
-            Brand = productResponseModel.Brand,
+            Brand = brand,
             Price = productResponseModel.Price,
-            Color = productResponseModel.Color,
+            Color = color,
             FrameSize = productResponseModel.FrameSize,
             HandlebarSize = productResponseModel.HandlebarSize,
             WheelSize = productResponseModel.WheelSize,
@@ -111,7 +140,7 @@ public class ProductsService : IProductService
             Image = idImage,
             Title = productResponseModel.Title,
             Quantity = productResponseModel.Quantity,
-            Category = productResponseModel.Category,
+            Category = category,
             SubCategory = productResponseModel.SubCategory,
             ConfigCategory = productResponseModel.ConfigCategory,
             Geometry = productResponseModel.Geometry
@@ -119,9 +148,9 @@ public class ProductsService : IProductService
         var createProduct = await _productRepository.CreateProduct(product);
         return new ProductResponseModel()
         {
-            Brand = createProduct.Brand,
+            Brand = createProduct.Brand.BrandName,
             Price = createProduct.Price,
-            Color = createProduct.Color,
+            Color = createProduct.Color.ColorName,
             FrameSize = createProduct.FrameSize,
             HandlebarSize = createProduct.HandlebarSize,
             WheelSize = createProduct.WheelSize,
@@ -129,7 +158,7 @@ public class ProductsService : IProductService
             Image = createProduct.Image,
             Title = createProduct.Title,
             Quantity = createProduct.Quantity,
-            Category = createProduct.Category,
+            Category = createProduct.Category.CategoryName,
             SubCategory = createProduct.SubCategory,
             ConfigCategory = createProduct.ConfigCategory,
             Geometry = createProduct.Geometry
@@ -139,12 +168,12 @@ public class ProductsService : IProductService
     public async Task<ProductResponseModel> UpdateProduct(Guid guid, ProductResponseModel productResponseModel)
     {
         var productId = await _productRepository.GetProductByIdAsync(guid);
-        productId.Brand = productResponseModel.Brand;
+        productId.Brand.BrandName = productResponseModel.Brand;
         productId.Price = productResponseModel.Price;
         var updateProduct = await _productRepository.UpdateProduct(productId);
         return new ProductResponseModel()
         {
-            Brand = updateProduct.Brand,
+            Brand = updateProduct.Brand.BrandName,
             Id = updateProduct.Id,
             Price = updateProduct.Price
         };
@@ -160,9 +189,9 @@ public class ProductsService : IProductService
             var productByPage = new ProductResponseModel()
             {
                 Id = product.Id,
-                Brand = product.Brand,
+                Brand = product.Brand.BrandName,
                 Price = product.Price,
-                Color = product.Color, 
+                Color = product.Color.ColorName, 
                 FrameSize = product.FrameSize,
                 HandlebarSize = product.HandlebarSize,
                 WheelSize = product.WheelSize,
@@ -170,7 +199,7 @@ public class ProductsService : IProductService
                 Image = url,
                 Title = product.Title,
                 Quantity = product.Quantity,
-                Category = product.Category,
+                Category = product.Category.CategoryName,
                 SubCategory = product.SubCategory,
                 ConfigCategory = product.ConfigCategory,
                 Geometry = product.Geometry
@@ -194,9 +223,9 @@ public class ProductsService : IProductService
             var productByFilter = new ProductResponseModel()
             {
                 Id = product.Id,
-                Brand = product.Brand,
+                Brand = product.Brand.BrandName,
                 Price = product.Price,
-                Color = product.Color, 
+                Color = product.Color.ColorName, 
                 FrameSize = product.FrameSize,
                 HandlebarSize = product.HandlebarSize,
                 WheelSize = product.WheelSize,
@@ -204,7 +233,7 @@ public class ProductsService : IProductService
                 Image = url,
                 Title = product.Title,
                 Quantity = product.Quantity,
-                Category = product.Category,
+                Category = product.Category.CategoryName,
                 SubCategory = product.SubCategory,
                 ConfigCategory = product.ConfigCategory,
                 Geometry = product.Geometry
@@ -240,7 +269,7 @@ public class ProductsService : IProductService
         var productDelete = await _productRepository.DeleteProduct(product);
         var productModel = new ProductResponseModel()
         {
-            Brand = productDelete.Brand,
+            Brand = productDelete.Brand.BrandName,
             Id = productDelete.Id,
             Price = productDelete.Price
         };

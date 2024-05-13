@@ -125,7 +125,6 @@ public class CartController : ApiController
     {
         var cartId = new Guid();
         var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-        Console.WriteLine("=============" +userId);
         if (string.IsNullOrEmpty(userId))
         {
             HttpContext.Request.Cookies.TryGetValue(SessionName, out var sessionId);

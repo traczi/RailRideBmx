@@ -45,6 +45,12 @@ builder.Services.AddScoped<IConfigurationBMXService, ConfigurationBmxService>();
 builder.Services.AddScoped<IAdressRepository, AdressRepository>();
 builder.Services.AddScoped<IAddressService, AddressService>();
 
+builder.Services.AddScoped<IColorRepository, ColorRepository>();
+builder.Services.AddScoped<IBrandRepository, BrandRepository>();
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+
+
+
 builder.Services.AddScoped<IStripeService, StripeService>();
 
 builder.Services.AddHostedService<TokenCleanupService>();

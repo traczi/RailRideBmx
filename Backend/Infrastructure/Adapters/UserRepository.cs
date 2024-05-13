@@ -24,14 +24,14 @@ public class UserRepository : IUserRepository
 
     public async Task<User> LoginUser(User user)
     {
-        var a = await _context.Users.FirstOrDefaultAsync(u => u.Email == user.Email && u.Password == user.Password);
-        return a;
+        var logUser = await _context.Users.FirstOrDefaultAsync(u => u.Email == user.Email && u.Password == user.Password);
+        return logUser;
     }
 
     public async Task<User> FindByEmail(User user)
     {
-        var a = await _context.Users.FirstOrDefaultAsync(u => u.Email == user.Email);
-        return a;
+        var userMail = await _context.Users.FirstOrDefaultAsync(u => u.Email == user.Email);
+        return userMail;
     }
 
     public async Task<User> FindUserById(Guid userId)
