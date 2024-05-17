@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "WFpPmbP3sWF4S2mWSsq1rxFN1oEvUiZK6Mx0eAMyg5x5wPYP2smxrWkpTGY6yJkG3y5zCasAG4f/yQa6KQZOKg==",
+  "dgSpecHash": "VAHaN2e6B8/LmKiHBxZ3l8vDb3gO00wdLBdqHdZoN++nOJ3O7Lkpb/ZfhS+AU2n3yS0npJdD0gNeiIye3M/3nA==",
   "success": true,
-  "projectFilePath": "C:\\Git\\RailRideBMXHexagonale\\Backend\\RailRideBMXHexagonale\\RailRideBMXHexagonale.csproj",
+  "projectFilePath": "C:\\Git\\RailRideBmx\\Backend\\RailRideBMXHexagonale\\RailRideBMXHexagonale.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\matte\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\matte\\.nuget\\packages\\cloudinarydotnet\\1.22.0\\cloudinarydotnet.1.22.0.nupkg.sha512",

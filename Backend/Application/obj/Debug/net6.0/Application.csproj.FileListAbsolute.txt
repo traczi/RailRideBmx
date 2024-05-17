@@ -51,3 +51,5 @@ C:\Git\RailRideBMXHexagonale\Backend\Application\obj\Debug\net6.0\Application.ge
 C:\Git\RailRideBMXHexagonale\Backend\Application\obj\Debug\net6.0\ref\Application.dll
 C:\Git\RailRideBMXHexagonale\Backend\Application\bin\Debug\net6.0\Infrastructure.dll
 C:\Git\RailRideBMXHexagonale\Backend\Application\bin\Debug\net6.0\Infrastructure.pdb
+C:\Git\RailRideBmx\Backend\Application\bin\Debug\net6.0\Infrastructure.dll
+C:\Git\RailRideBmx\Backend\Application\bin\Debug\net6.0\Infrastructure.pdb

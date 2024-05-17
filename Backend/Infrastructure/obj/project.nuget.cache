@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "s1g+t2m6eNMM4biVtZW4QY6UxV5EL7O2nJ31ibQtyvF1Ycw+4yCpI8D5RDhv9wEeOKJXs7koZmdeUdKdNeOMGQ==",
+  "dgSpecHash": "N1Yyrx5saKr5U1Qr3Scr92utLhsfLEjN8Esf0x28dC3QLXwbi7SpB1fAN4p1f6/UCm6+a4Ah8cvZSYek+jpbHw==",
   "success": true,
-  "projectFilePath": "C:\\Git\\RailRideBMXHexagonale\\Backend\\Infrastructure\\Infrastructure.csproj",
+  "projectFilePath": "C:\\Git\\RailRideBmx\\Backend\\Infrastructure\\Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\matte\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\matte\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\6.0.16\\microsoft.aspnetcore.cryptography.internal.6.0.16.nupkg.sha512",
