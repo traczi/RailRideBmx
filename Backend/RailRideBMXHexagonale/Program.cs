@@ -16,6 +16,19 @@ using Account = CloudinaryDotNet.Account;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Host.ConfigureAppConfiguration((hostingContext, config) =>
+{
+    var env = hostingContext.HostingEnvironment;
+
+    config.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+        .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true);
+
+    if (env.EnvironmentName == "Docker")
+    {
+        config.AddJsonFile("appsettings.docker.json", optional: true, reloadOnChange: true);
+    }
+});
+
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DataBaseConnection")));
 builder.Services.AddScoped<IEmailService, EmailService>();
@@ -102,15 +115,21 @@ Cloudinary cloudinary = new Cloudinary(account);
 cloudinary.Api.Secure = true;
 builder.Services.AddSingleton(cloudinary);
 
+
 var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseDeveloperExceptionPage();
 }
+app.UseSwagger();
+app.UseSwaggerUI(c =>
+{
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+    c.RoutePrefix = string.Empty; // Mettre Swagger UI à la racine de l'application
+});
 app.UseSession();
 app.UseCors();
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 app.UseMiddleware<ErrorHandlerMiddleware>();

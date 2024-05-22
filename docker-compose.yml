@@ -1,0 +1,34 @@
+services: 
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: sqlserver
+    environment:
+      SA_PASSWORD: "Mat13836@"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlserver-data:/var/opt/mssql
+      - ./db-init:/db-init
+    entrypoint: ["/bin/bash", "-c", "/opt/mssql/bin/sqlservr & sleep 20 && /opt/mssql-tools/bin/sqlcmd -U sa -P Mat13836@ -d master -i /db-init/init-db.sql && tail -f /dev/null"]
+    networks:
+      - reseau-test
+  
+  backend:
+    build:
+      context: ./Backend
+      dockerfile: Dockerfile
+    environment:
+      - DOTNET_ENVIRONMENT=Docker
+    container_name: railridebmx
+    ports:
+      - "8080:80"
+    depends_on: 
+      - sqlserver
+    networks: 
+      - reseau-test
+networks:
+  reseau-test:
+
+volumes: 
+  sqlserver-data:
